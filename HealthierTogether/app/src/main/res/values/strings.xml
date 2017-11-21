@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">อสม. ผู้ช่วยคู่ใจ</string>
+
+    <string name="Home_assessment">เยี่ยมบ้าน</string>
+    <string name="MySick">ผู้ป่วยของฉัน</string>
+    <string name="personal_user">ผู้ป่วยของฉัน</string>
+    <string name="exercise">การออกกำลังกาย</string>
+    <string name="Record">เยี่ยมบ้าน</string>
+    <string name="History">แบบบันทึกข้อมูลผู้ป่วย</string>
+    <string name="title_activity_maps">แผนที่</string>
+    <string name="MenuMap">รายงานภาพรวม</string>
+    <string name="title_activity_map_list">กลุ่มเสี่ยง</string>
+    <string name="action_settings">แจ้งเตือนข้อมูล</string>
+
+
 </resources>

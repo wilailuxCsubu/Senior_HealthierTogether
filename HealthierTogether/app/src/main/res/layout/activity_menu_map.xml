@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="ubu.healthiertogether.MenuMap">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/trans_white_rectangle"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_weight="50"
+        android:gravity="center">
+
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="75dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_white_m"
+            android:drawableLeft="@mipmap/ic_allmap"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:onClick="ToMap"
+            android:paddingLeft="40dp"
+            android:text="ภาพรวม"
+            android:textColor="#000"
+            android:textSize="22dp" />
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="75dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_white_m"
+            android:drawableLeft="@mipmap/ic_map_icon"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:onClick="ToMapList"
+            android:paddingLeft="40dp"
+            android:text="กลุ่มเสี่ยง"
+            android:textColor="#000"
+            android:textSize="22dp" />
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/banner1"
+        android:layout_weight="80">
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

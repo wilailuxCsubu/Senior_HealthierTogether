@@ -1,15 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ubu.healthiertogether">
+    package="ubu.healthiertogether" >
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Home_assessment"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".MySick"
+            android:label="@string/MySick"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Exercise"
+            android:label="@string/exercise"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Personal_user"
+            android:label="@string/personal_user"
+            android:parentActivityName=".MySick" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MySick" />
+        </activity>
+        <activity android:name=".Genogram" />
+        <activity
+            android:name=".Patient_history1"
+            android:label="@string/History"
+            android:parentActivityName=".MySick" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MySick" />
+        </activity>
+        <activity
+            android:name=".Patient_history2"
+            android:label="@string/History"
+            android:parentActivityName=".Patient_history1" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MySick" />
+        </activity>
+        <activity
+            android:name=".Patient_history3"
+            android:label="@string/History"
+            android:parentActivityName=".Patient_history2" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MySick" />
+        </activity>
+        <activity
+            android:name=".Patient_history4"
+            android:label="@string/History"
+            android:parentActivityName=".Patient_history3" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MySick" />
+        </activity>
+        <activity
+            android:name=".Patient_history5"
+            android:label="@string/History"
+            android:parentActivityName=".Patient_history4" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MySick" />
+        </activity>
+        <activity
+            android:name=".Patient_history6"
+            android:label="@string/History"
+            android:parentActivityName=".Patient_history5" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MySick" />
+        </activity>
+        <activity
+            android:name=".Login"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Home_assessment1"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".Home_assessment" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Home_assessment2"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".Home_assessment1" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Home_assessment3"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".Home_assessment2" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Home_assessment4"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".Home_assessment3" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Home_assessment5"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".Home_assessment4" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Home_assessment6"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".Home_assessment5" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Home_assessment7"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".Home_assessment6" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Home_assessment8"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".Home_assessment7" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Home_assessment9"
+            android:label="@string/Home_assessment"
+            android:parentActivityName=".Home_assessment8" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MapsActivity" />
+        </activity>
+        <activity
+            android:name=".MenuMap"
+            android:label="@string/MenuMap"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuMap" />
+        </activity>
+        <activity
+            android:name=".MapList"
+            android:label="@string/title_activity_map_list"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MenuMap">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
