@@ -24,7 +24,7 @@ define('DB','senior_healthiertogether'); // ชื่อ database ที่จ�
 		   	array_push($result,array("Name"=>$row['Name']));
 	  }
 
- 	echo json_encode(array('result'=>$result));
+ 	echo json_encode(array('result'=>$result),JSON_UNESCAPED_UNICODE);
  
  	mysqli_close($con);
  
