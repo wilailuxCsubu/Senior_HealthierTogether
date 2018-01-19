@@ -2,7 +2,7 @@
 header("content-type:text/javascript;charset=utf-8");
 define('HOST','localhost'); //ชื่อ host
 define('USER','root'); //username
-define('PASS','root'); //password
+define('PASS','242f67e0578d2d63ca9b624168a49a61d04d75626344f63d'); //password
 define('DB','senior_healthiertogether'); // ชื่อ database ที่จะติดต่อ
 
  if($_SERVER['REQUEST_METHOD']=='GET'){
