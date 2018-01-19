@@ -57,28 +57,30 @@
                     android:layout_marginBottom="20dp">
 
                     <RadioButton
+                        android:id="@+id/ch0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
                         android:text="กลั้นไม่ได้ หรือต้องการสวนอุจจาระเสมอ"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:textSize="23dp" />
 
                     <RadioButton
+                        android:id="@+id/ch1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="กลั้นไม่ได้เป็นครั้งคราว น้อยกว่า 1 ครั้งต่อสัปดาห์"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:textSize="23dp" />
 
                     <RadioButton
+                        android:id="@+id/ch2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="กลั้นได้ปกติ"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:textSize="23dp"/>
 
 
@@ -91,7 +93,6 @@
 
 
         <Button
-            android:onClick="nextTo"
             android:id="@+id/submit"
             android:layout_width="200dp"
             android:layout_height="50dp"

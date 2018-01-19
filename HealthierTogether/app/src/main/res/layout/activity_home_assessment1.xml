@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="แบบประเมินผู้ป่วยตามหลัก"
             android:textColor="#000"
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:paddingTop="10dp">
+            android:paddingTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,24 +47,28 @@
                     android:layout_margin="5dp"
                     android:text="การล้างหน้า แปรงฟัน หวีผม โกนหนวด ใน 2วันที่ผันมา"
                     android:textColor="#000"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:textSize="25dp" />
 
                 <RadioGroup
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="30dp">
 
                     <RadioButton
+                        android:id="@+id/ch0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
                         android:text="ต้องการความช่วยเหลือ"
                         android:layout_margin="5dp"
+                        android:paddingBottom="5dp"
                         android:textSize="23dp" />
 
                     <RadioButton
+                        android:id="@+id/ch1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ทำเองได้"
@@ -81,7 +85,6 @@
 
 
         <Button
-            android:onClick="nextTo"
             android:id="@+id/submit"
             android:layout_width="200dp"
             android:layout_height="50dp"

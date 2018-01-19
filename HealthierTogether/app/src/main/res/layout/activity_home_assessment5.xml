@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="แบบประเมินผู้ป่วยตามหลัก"
             android:textColor="#000"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="INHOMESSS"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:textColor="#000"
             android:textSize="23dp" />
 
@@ -48,6 +48,8 @@
                     android:layout_margin="5dp"
                     android:text="การแต่งตัวสวมใส่หรือถอดเสื้อผ้า"
                     android:textColor="#000"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
                     android:textSize="25dp" />
 
                 <RadioGroup
@@ -58,22 +60,26 @@
                     android:layout_marginBottom="20dp">
 
                     <RadioButton
+                        android:id="@+id/ch0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
                         android:text="ไม่สามารถทำเองได้"
                         android:layout_margin="5dp"
+                        android:paddingBottom="5dp"
                         android:textSize="23dp" />
 
                     <RadioButton
+                        android:id="@+id/ch1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ทำได้ด้วยตัวเอง 50%"
+                        android:paddingBottom="5dp"
                         android:layout_margin="5dp"
                         android:textSize="23dp" />
 
 
                     <RadioButton
+                        android:id="@+id/ch2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ทำเองได้ดี"
@@ -90,7 +96,6 @@
 
 
         <Button
-            android:onClick="nextTo"
             android:id="@+id/submit"
             android:layout_width="200dp"
             android:layout_height="50dp"

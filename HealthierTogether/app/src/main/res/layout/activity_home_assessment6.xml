@@ -58,14 +58,15 @@
                     android:layout_marginBottom="20dp">
 
                     <RadioButton
+                        android:id="@+id/ch0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
                         android:text="ไม่สามารถทำเองได้"
                         android:layout_margin="5dp"
                         android:textSize="23dp" />
 
                     <RadioButton
+                        android:id="@+id/ch1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ต้องมีคนช่วย"
@@ -74,6 +75,7 @@
 
 
                     <RadioButton
+                        android:id="@+id/ch2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ขึ้นลงเองได้"
@@ -81,6 +83,7 @@
                         android:textSize="23dp"/>
 
                     <RadioButton
+                        android:id="@+id/ch3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ไม่ต้องมีคนช่วยเหลือ"
