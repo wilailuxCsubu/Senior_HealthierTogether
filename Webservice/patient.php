@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion"><br>
         <div class="testimonial-image">
-          <center><img src="img/profile/user10.png" width="100px" height="100px"></center>
+          <center><img src="./img/profile/user10.png" width="100px" height="100px"></center>
         </div>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="index.html">
@@ -168,6 +168,7 @@
               <i class="fa fa-table"></i>  รายชื่อผู้ป่วย</div>
             <div class="card-body">
               <div class="table-responsive">
+                  <form action="profile_p.php" method="post">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -176,7 +177,7 @@
                       <th>ผู้รับผิดชอบ</th>
                       <th>ผลการประเมิน</th>
                       <th>ว/ด/ป เยี่ยมล่าสุด</th>
-                      <th>จัดการ</th>
+                      <!-- <th>จัดการ</th> -->
                     </tr>
                   </thead>
                   <tfoot>
@@ -186,7 +187,7 @@
                       <th>ผู้รับผิดชอบ</th>
                       <th>ผลการประเมิน</th>
                       <th>ว/ด/ป เยี่ยมล่าสุด</th>
-                      <th>จัดการ</th>
+                      <!-- <th>จัดการ</th> -->
                     </tr>
                   </tfoot>
 
@@ -195,14 +196,12 @@
                   ?>
 
                   <tbody>
-                    <tr>
-                      <td><?php echo $objResult["name_p"];?></td>
+                    <tr >
+                      <td><input name="name" onclick="myFunction()" class="btn btn-outline-info" type="submit" value="<?php echo $objResult["name_p"];?>"></td>
                       <td><?php echo $objResult["age"];?></td>
                       <td><?php echo $objResult["name_a"];?></td>
                       <td><?php echo $objResult["result"];?></td>
                       <td><?php echo $objResult["date_n"];?></td>
-                      <td><a href="profile_p.php"><button type="button" id="ss" class="btn btn-outline-primary" value="<?php echo $objResult["name_p"];?>">ไปที่ <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button></a></td>
-                      <!-- <td><a href="profile_p.php"><input class="btn btn-primary" type="button" value="Input"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a></td> -->
                     </tr>
 
                   </tbody>
@@ -210,6 +209,7 @@
                   }
                   ?>
                 </table>
+              </form>
                 <?php
                 mysql_close($objConnect);
                 ?>
@@ -255,13 +255,8 @@
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
 
-    <script >
-    $(document).ready(function(){
-    $("button").click(function(){
-        alert("Value: " + $("#ss").val());
-    });
-});
-    </script>
+
+
 
   </div>
 </body>

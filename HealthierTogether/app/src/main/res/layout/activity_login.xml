@@ -23,7 +23,7 @@
             android:textStyle="bold"
             android:textSize="30dp"
             android:layout_marginTop="30dp"
-            android:textColor="#46e1ff"
+            android:textColor="#424242"
             android:text="เข้าสู่ระบบ"/>
 
         <ImageView
@@ -56,7 +56,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:drawableLeft="@mipmap/ic_user_icon"
-            android:textSize="22sp"
+            android:textSize="25sp"
             android:drawablePadding="5dp"
             android:padding="10dp"
             android:id="@+id/userID"
@@ -71,7 +71,7 @@
             android:layout_marginEnd="15dp"
             android:layout_marginTop="10dp"
             android:drawableLeft="@mipmap/ic_lock_icon"
-            android:textSize="22dp"
+            android:textSize="25dp"
             android:drawablePadding="5dp"
             android:padding="10dp"
             android:inputType="textPassword"

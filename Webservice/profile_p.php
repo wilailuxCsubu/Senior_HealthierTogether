@@ -150,18 +150,164 @@
 
       </ol>
       <br>
-      <ul class="nav nav-tabs">
-<li class="nav-item">
-<a class="nav-link active" href="#">ข้อมูลประวัติ</a>
-</li>
 
-<li class="nav-item">
-<a class="nav-link" href="#">ผังครอบครัว</a>
-</li>
-<li class="nav-item">
-<a class="nav-link disabled" href="#">รายงานผล</a>
-</li>
-</ul>
+
+      <ul class="nav nav-tabs" style="font-size:20px">
+          <li class="nav-item">
+            <a class="nav-link active" href="profile_p.php">ข้อมูลประวัต</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="genogram.php">ผังครอบครัว</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">รายงานผล</a>
+          </li>
+
+        </ul>
+
+        <br>  <br>
+      <!-- Icon Cards-->
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-sm-12 mb-3">
+          <div class="card mb-3">
+            <div class="card-body">
+              <img class="card-img-top img-fluid w-100" src="../img/h1.jpg" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-9 col-sm-12 mb-3">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <h5><label for="inputEmail4">รหัส HN </label></h5>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+              <div class="form-group col-md-3">
+                <h5><label for="inputEmail4">อายุ </label></h5>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <h5><label for="inputEmail4">ชื่อ</label></h5>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+              <div class="form-group col-md-6">
+                <h5><label for="inputPassword4">นามสกุล</label></h5>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <h5><label for="inputAddress">ที่อยู่</label><h5>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+
+
+            <h5><div class="form-row">
+              <div class="form-group col-md-2">
+                <label for="inputEmail4">สถานภาพ :</label>
+              </div>
+              <div class="form-group col-md-1">
+                <label class="checkbox-inline">
+                   <input type="checkbox" value=""> โสด
+                 </label>
+              </div>
+              <div class="form-group col-md-1">
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> คู่
+                </label>
+              </div>
+              <div class="form-group col-md-1">
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> หย่า
+                </label>
+              </div>
+              <div class="form-group col-md-2">
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> หม้าย
+                </label>
+              </div>
+              <div class="form-group col-md-2">
+                <input type="email" class="form-control" id="inputEmail4" placeholder="อื่น....">
+              </div>
+            </div></h5>
+
+            <h5><div class="form-row">
+              <div class="form-group col-md-2">
+                <label for="inputEmail4">อาชีพ :</label>
+              </div>
+              <div class="form-group col-md-2">
+                <label class="checkbox-inline">
+                   <input type="checkbox" value=""> ทำนา
+                 </label>
+              </div>
+              <div class="form-group col-md-2">
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> ค้าขาย
+                </label>
+              </div>
+              <div class="form-group col-md-2">
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> รับจ้าง
+                </label>
+              </div>
+              <div class="form-group col-md-2">
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> รับราชการ
+                </label>
+              </div>
+              <div class="form-group col-md-2">
+                <input type="email" class="form-control" id="inputEmail4" placeholder="อื่น....">
+              </div>
+            </div></h5>
+
+            <h5><div class="form-row">
+              <div class="form-group col-md-3.5">
+                <label for="inputEmail4">สิทธิการรักษา :</label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> บัตรประกันสุขภาพถ้วนหน้า <br>
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> จ่ายตรง<br>
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> บัตรประกันสังคม<br>
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" value=""> ต่างด้าว<br>
+                </label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="อื่น....">
+              </div>
+
+
+              </div>
+            </div></h5>
+
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </form>
+        </div>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
 
 
     <!-- Scroll to Top Button-->
@@ -186,6 +332,17 @@
         </div>
       </div>
     </div>
+
+    <!-- <?php
+    $n = $_POST["name"];
+
+    echo "<script>";
+    echo "alert(\" $n\");";
+    echo "</script>";
+
+    ?> -->
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

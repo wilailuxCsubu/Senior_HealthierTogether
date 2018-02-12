@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a106b05-2da7-4b15-b794-2dda61d1efea" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/build.gradle" afterPath="$PROJECT_DIR$/HealthierTogether/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment1.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment2.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment3.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment4.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment5.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment5.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment6.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment6.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment7.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment7.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment8.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment8.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment9.java" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/java/ubu/healthiertogether/Home_assessment9.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment1.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment2.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment3.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment4.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment5.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment5.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment6.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment6.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment7.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment7.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment8.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment8.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment9.xml" afterPath="$PROJECT_DIR$/HealthierTogether/app/src/main/res/layout/activity_home_assessment9.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthierTogether/build.gradle" afterPath="$PROJECT_DIR$/HealthierTogether/build.gradle" />
-    </list>
+    <list default="true" id="4a106b05-2da7-4b15-b794-2dda61d1efea" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,8 +39,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -79,8 +56,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">

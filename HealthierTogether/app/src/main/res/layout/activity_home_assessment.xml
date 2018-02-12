@@ -16,7 +16,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:gravity="center"
                 android:text="แบบประเมินผู้ป่วยตามหลัก"
                 android:textColor="#000"
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="INHOMESSS"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="20dp"
                 android:textColor="#000"
                 android:textSize="23dp" />
 
@@ -35,13 +35,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:paddingTop="10dp">
+
+               >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="15dp">
+                    android:paddingBottom="25dp"
+                    android:paddingTop="25dp"
+                    android:layout_margin="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -49,7 +52,8 @@
                         android:layout_margin="5dp"
                         android:text="การรับประทานอาหาร"
                         android:textColor="#000"
-                        android:textSize="25dp" />
+                        android:textSize="25dp"
+                        android:paddingBottom="5dp"/>
 
                     <RadioGroup
                         android:layout_marginTop="5dp"
@@ -64,7 +68,8 @@
                             android:layout_height="wrap_content"
                             android:text="ไม่สามารถตักอาหารเข้าปากได้"
                             android:layout_margin="5dp"
-                            android:textSize="23dp" />
+                            android:textSize="23dp"
+                            android:paddingBottom="5dp"/>
 
                         <RadioButton
                             android:id="@+id/ch1"
@@ -72,7 +77,8 @@
                             android:layout_height="wrap_content"
                             android:text="ตักอาหารเองได้ แต่ต้องมีคนช่วย"
                             android:layout_margin="5dp"
-                            android:textSize="23dp" />
+                            android:textSize="23dp"
+                            android:paddingBottom="5dp"/>
 
                         <RadioButton
                             android:id="@+id/ch2"
@@ -80,7 +86,8 @@
                             android:layout_height="wrap_content"
                             android:text="ตักอาหารช่วยตัวเองได้ปกติ"
                             android:layout_margin="5dp"
-                            android:textSize="23dp"/>
+                            android:textSize="23dp"
+                            android:paddingBottom="5dp"/>
 
 
 
@@ -103,12 +110,17 @@
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="36dp"
+                android:layout_marginTop="35dp"
+
                 />
 
 
         </LinearLayout>
+
+
+
+
+
 
 
 

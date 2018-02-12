@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion"><br>
         <div class="testimonial-image">
-          <center><img src="img/profile/user10.png" width="100px" height="100px"></center>
+          <center><img src="../img/profile/user10.png" width="100px" height="100px"></center>
         </div>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="index.html">
@@ -220,7 +220,7 @@
       <br>
       <div class="card mb-3">
         <div class="card-body">
-          <img class="card-img-top img-fluid w-100" src="img/h1.jpg" alt="">
+          <img class="card-img-top img-fluid w-100" src="../img/h1.jpg" alt="">
 
 
         </div>
