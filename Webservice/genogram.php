@@ -635,7 +635,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-bell"></i>
             <span class="d-lg-none">Alerts
@@ -644,8 +644,8 @@
             <span class="indicator text-warning d-none d-lg-block">
               <i class="fa fa-fw fa-circle"></i>
             </span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+          </a> -->
+          <!-- <div class="dropdown-menu" aria-labelledby="alertsDropdown">
             <h6 class="dropdown-header">New Alerts:</h6>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
@@ -676,20 +676,9 @@
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item small" href="#">View all alerts</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0 mr-lg-2">
-            <div class="input-group">
-              <input class="form-control" type="text" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
-        </li>
+          </div> -->
+        <!-- </li> -->
+
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>ออกจากระบบ</a>
@@ -768,7 +757,7 @@
           ?>
           <label for="message-text" class="form-control-label">สามี</label>
           <select class="form-control" name= "vir">
-            <option value=" "></option>
+            <option value="0"></option>
             <?php
             while($objResult = mysql_fetch_array($objQuery)){
             ?>
@@ -802,7 +791,7 @@
           ?>
           <label for="message-text" class="form-control-label">ภรรยา</label>
           <select class="form-control" name= "ux">
-            <option value=" "></option>
+            <option value="0"></option>
             <?php
             while($objResult = mysql_fetch_array($objQuery)){
             ?>
@@ -856,7 +845,7 @@
             ?>
             <label for="message-text" class="form-control-label">แม่</label>
             <select class="form-control" name= "mom">
-              <option value=" "></option>
+              <option value="0"></option>
               <?php
               while($objResult = mysql_fetch_array($objQuery)){
               ?>
