@@ -136,6 +136,151 @@
 
                   <br>  <br>
 
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h4>ข้อมูลส่วนตัว<h4>
+                              </div><br>
+                              <div class="panel-body">
+                                  <div class="row" style="font-size:16px">
+                                    <div class="col-lg-3">
+
+                                    </div>
+
+                                      <div class="col-lg-9">
+                                          <form role="form">
+                                            <div class="row">
+                                              <div class="form-group col-md-4" >
+                                                  <label>รหัส HN</label>
+                                                  <input class="form-control" id="disabledInput" type="text" placeholder="Disabled HN" disabled>
+                                              </div>
+                                              <!-- <div class="form-group col-md-4" >
+                                                  <label>รหัส HN</label>
+                                                  <input class="form-control" id="disabledInput" type="text" placeholder="Disabled HN" disabled>
+                                              </div> -->
+                                            </div><br>
+                                            <div class="row">
+                                              <div class="form-group col-md-6">
+                                                  <label>ชื่อ</label>
+                                                  <input class="form-control" placeholder="Enter text">
+                                              </div>
+                                              <div class="form-group col-md-6">
+                                                  <label>นาสกุล</label>
+                                                  <input class="form-control" placeholder="Enter text">
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="form-group col-md-3">
+                                                  <label>อายุ</label>
+                                                  <input class="form-control" placeholder="Enter text">
+                                              </div>
+
+                                            </div>
+
+                                              <!-- <div class="form-group">
+                                                  <label>File input</label>
+                                                  <input type="file">
+                                              </div> -->
+                                              <div class="form-group">
+                                                  <label>ที่อยู่</label>
+                                                  <textarea class="form-control" rows="3"></textarea>
+                                              </div><br>
+
+                                              <div class="form-group">
+                                                  <label>สถานภาพ :</label> &nbsp;&nbsp;&nbsp;
+                                                  <label class="radio-inline">
+                                                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>โสด
+                                                  </label>
+                                                  <label class="radio-inline">
+                                                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">คู่
+                                                  </label>
+                                                  <label class="radio-inline">
+                                                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">หย่า
+                                                  </label>
+                                                  <label class="radio-inline">
+                                                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">หม้าย
+                                                  </label>
+                                                  <label class="radio-inline">
+                                                    <input class="form-control" placeholder="อื่นๆ . . . . ">
+                                                      <!-- <input  name=" " id="" value=" " placeholder="อื่น ..."> -->
+                                                  </label>
+                                              </div><br>
+                                              <div class="form-group">
+                                                  <label>อาชีพ :</label> &nbsp;&nbsp;&nbsp;
+                                                  <label class="radio-inline">
+                                                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>ทำนา
+                                                  </label>
+                                                  <label class="radio-inline">
+                                                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">ค้าขาย
+                                                  </label>
+                                                  <label class="radio-inline">
+                                                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">รับจ้าง
+                                                  </label>
+                                                  <label class="radio-inline">
+                                                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">รับราชการ
+                                                  </label>
+                                                  <label class="radio-inline">
+                                                    <input class="form-control" placeholder="อื่นๆ . . . . ">
+                                                      <!-- <input  name=" " id="" value=" " placeholder="อื่น ..."> -->
+                                                  </label>
+                                              </div><br>
+                                              <div class="form-group">
+                                                  <label>สิทธิการรักษา :</label>
+                                                  <div class="radio">
+                                                      <label>
+                                                          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>บัตรประกันสุขภาพถ้วนหน้า
+                                                      </label>
+                                                  </div>
+                                                  <div class="radio">
+                                                      <label>
+                                                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">จ่ายตรง
+                                                      </label>
+                                                  </div>
+                                                  <div class="radio">
+                                                      <label>
+                                                          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">บัตรประกันสังคม
+                                                      </label>
+                                                  </div>
+                                                  <div class="radio">
+                                                      <label>
+                                                          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">ต่างด้าว
+                                                      </label>
+
+                                                  </div>
+                                                  <label class="radio-inline">
+                                                    <input class="form-control" placeholder="อื่นๆ . . . . ">
+                                                      <!-- <input  name=" " id="" value=" " placeholder="อื่น ..."> -->
+                                                  </label>
+                                              </div>
+                                              <!-- <div class="form-group">
+                                                  <label>Selects</label>
+                                                  <select class="form-control">
+                                                      <option>1</option>
+                                                      <option>2</option>
+                                                      <option>3</option>
+                                                      <option>4</option>
+                                                      <option>5</option>
+                                                  </select>
+                                              </div> -->
+                                              <br>
+                                              <button type="submit" class="btn btn-primary btn-lg btn-block">บันทึก</button><br>
+                                          </form>
+                                      </div><br>
+                                      <!-- /.col-lg-6 (nested) -->
+
+                                  </div>
+                                  <!-- /.row (nested) -->
+                              </div>
+                              <!-- /.panel-body -->
+                          </div>
+                          <!-- /.panel -->
+                      </div>
+                      <!-- /.col-lg-12 -->
+                  </div>
+                  <!-- /.row -->
+
+
 
 
 

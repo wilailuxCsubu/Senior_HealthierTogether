@@ -8,6 +8,8 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -46,7 +48,7 @@
         </activity>
         <activity
             android:name=".Personal_user"
-            android:label="@string/personal_user"
+            android:label=" "
             android:parentActivityName=".MySick">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

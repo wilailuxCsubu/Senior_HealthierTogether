@@ -693,7 +693,7 @@
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">เพิ่มสมาชิกในครอบครัว</h5>
+        <h3 class="modal-title" id="exampleModalLabel">เพิ่มสมาชิกในครอบครัว</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -725,12 +725,12 @@
           include "config.php";
           $objConnect = mysql_connect("$servername","$username","$password") or die("Error Connect to Database");
           $objDB = mysql_select_db("$dbname");
-          $strSQL = "SELECT * From geno_family WHERE wife IS NULL AND husband IS NULL AND sex ='M' ";
+          $strSQL = "SELECT * From geno_family WHERE wife =0  AND husband =0 AND sex ='M' ";
           $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]")
           ?>
           <label for="message-text" class="form-control-label">สามี</label>
           <select class="form-control" name= "vir">
-            <option value="0"></option>
+            <option value=" "></option>
             <?php
             while($objResult = mysql_fetch_array($objQuery)){
             ?>
@@ -759,12 +759,12 @@
           include "config.php";
           $objConnect = mysql_connect("$servername","$username","$password") or die("Error Connect to Database");
           $objDB = mysql_select_db("$dbname");
-          $strSQL = "SELECT * From geno_family WHERE wife IS NULL AND husband IS NULL AND sex ='F' ";
+          $strSQL = "SELECT * From geno_family WHERE wife =0 AND husband =0 AND sex ='F' ";
           $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]")
           ?>
           <label for="message-text" class="form-control-label">ภรรยา</label>
           <select class="form-control" name= "ux">
-            <option value="0"></option>
+            <option value=" "></option>
             <?php
             while($objResult = mysql_fetch_array($objQuery)){
             ?>
@@ -774,6 +774,7 @@
             ?>
           </select>
         </div>
+
         <?php
         mysql_close($objConnect);
         ?>
@@ -781,7 +782,7 @@
       </div>
 
 
-
+      <div class="row">
           <div class="form-group col-md-6">
             <?php
             include "config.php";
@@ -794,7 +795,7 @@
             <!-- <input type = "number" class = "form-control" name= "fater"> -->
 
             <select class="form-control" name= "fater">
-              <option value="0"></option>
+              <option value=" "></option>
               <?php
               while($objResult = mysql_fetch_array($objQuery)){
               ?>
@@ -805,9 +806,12 @@
             </select>
 
           </div>
+
+        </div>
           <?php
           mysql_close($objConnect);
           ?>
+        <div class="row">
           <div class="form-group col-md-6">
             <?php
             include "config.php";
@@ -818,7 +822,7 @@
             ?>
             <label for="message-text" class="form-control-label">แม่</label>
             <select class="form-control" name= "mom">
-              <option value="0"></option>
+              <option value=" "></option>
               <?php
               while($objResult = mysql_fetch_array($objQuery)){
               ?>
@@ -829,11 +833,14 @@
             </select>
 
           </div>
+          </div>
+
+
           <?php
           mysql_close($objConnect);
           ?>
 
-
+          <div class="row">
           <div class="form-group col-md-10">
           <label for = "man"></label>เพศ : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input type = "radio" name ="sex" id = "M" value = "M"/> ชาย
@@ -842,6 +849,7 @@
             </div>
 
         </div>
+          </div>
 
 
           <div class="modal-footer">
@@ -866,7 +874,7 @@
               <br>
               <div class="col-xl-12">
                 <div id="sample">
-                  <div id="myDiagramDiv" style="border: solid 1px black; width:90%; height:600px">
+                  <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px">
 
                   </div>
                 </div>

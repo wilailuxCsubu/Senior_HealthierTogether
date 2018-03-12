@@ -121,11 +121,7 @@
     include "config.php";
     $objConnect = mysql_connect("$servername","$username","$password") or die("Error Connect to Database");
     $objDB = mysql_select_db("$dbname");
-    $strSQL = "SELECT patient.HN,CONCAT(patient.Name,' ',patient.Last) AS name_p,
-              patient.age,CONCAT(authorities.Name,' ',authorities.Last) AS name_a,
-              assessment.result,MAX(assessment.date) AS date_n From patient
-              INNER JOIN authorities ON patient.userID = authorities.userID
-              INNER JOIN assessment ON  patient.HN = assessment.HN GROUP BY name_p ORDER BY date_n DESC";
+    $strSQL = "SELECT CONCAT(Name,' ',Last) AS name_a ,age ,Position ,Under ,callNum  From authorities ";
     $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]")
 
     ?>
@@ -133,12 +129,11 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">รายชื่อผู้ป่วย</h1>
+                    <h2 class="page-header">รายชื่อบุคลาการทางการแพทย์</h2>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-
-            <center><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">เพิ่มรายชื่อ <i class="fa fa-user-plus"></i></button></center>
+            <center><button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">เพิ่มรายชื่อ <i class="fa fa-user-plus"></i></button></center>
                     <br>
             <!-- /.row -->
             <div class="row">
@@ -154,10 +149,10 @@
                                 <thead>
                                     <tr>
                                       <th>ชื่อ</th>
-                                      <th>อายุ</th>
-                                      <th>ผู้รับผิดชอบ</th>
-                                      <th>ผลการประเมิน</th>
-                                      <th>ว/ด/ป เยี่ยมล่าสุด</th>
+                                      <th>อายุ (ปี)</th>
+                                      <th>ตำแหน่ง</th>
+                                      <th>สังกัด</th>
+                                      <th>เบอร์โทรติดต่อ</th>
                                     </tr>
                                 </thead>
                                 <?php
@@ -166,11 +161,11 @@
                                 <tbody >
                                     <tr >
                                       <!-- <button type="button" class="btn btn-outline btn-info">Info</button> -->
-                                      <td><input name="name" onclick="myFunction()" class="btn btn-outline btn-info" type="submit" value="<?php echo $objResult["name_p"];?>" style="font-size:17px"></td>
+                                      <td><input name="name" onclick="myFunction()" class="btn btn-outline btn-warning" type="submit" value="<?php echo $objResult["name_a"];?>" style="font-size:17px"></td>
                                       <td><?php echo $objResult["age"];?></td>
-                                      <td><?php echo $objResult["name_a"];?></td>
-                                      <td><?php echo $objResult["result"];?></td>
-                                      <td><?php echo $objResult["date_n"];?></td>
+                                      <td><?php echo $objResult["Position"];?></td>
+                                      <td><?php echo $objResult["Under"];?></td>
+                                      <td>0<?php echo $objResult["callNum"];?></td>
                                     </tr>
 
                                 </tbody>
@@ -201,6 +196,97 @@
 
     </div>
     <!-- /#wrapper -->
+
+
+    <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">เพิ่มรายชื่อบุคคลากรทางการแพทย์</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <div class="modal-body">
+          <form method="post" action="form_a.php">
+            <div class="row">
+              <div class="form-group col-md-6 ">
+                <label for="recipient-name" class="form-control-label">ชื่อ:</label>
+                <input type = "text" class = "form-control" name= "name">
+              </div>
+              <div class="form-group col-md-6 ">
+                <label for="recipient-name" class="form-control-label">นามสกุล:</label>
+                <input type = "text" class = "form-control" name= "last">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-4 ">
+                <label for="message-text" class="form-control-label">อายุ:</label>
+                <select class="form-control" name= "age" type="number">
+                  <!-- <option></option> -->
+                  <?php
+                  for($i=1; $i<=200 ;$i++){
+                      echo "<option value=$i>$i</option>";
+                  }
+                  ?>
+                </select>
+              </div>
+              <div class="form-group col-md-5 ">
+                <label for="recipient-name" class="form-control-label">เบอร์โทรติดต่อ:</label>
+                <input type ="tel" class = "form-control" name= "call">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6 ">
+                <label for="recipient-name" class="form-control-label">ตำแหน่ง:</label>
+                <input type = "text" class = "form-control" name= "posi">
+              </div>
+              <div class="form-group col-md-6 ">
+                <label for="recipient-name" class="form-control-label">สังกัด:</label>
+                <input type = "text" class = "form-control" name= "under">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-5 ">
+                <label for="recipient-name" class="form-control-label">ตั้งรหัสผ่านเริ่มต้น:</label>
+                <input type = "text" class = "form-control" name= "pw" placeholder="ควรใส่ 4 ตัวอักษรขึ้นไป">
+              </div>
+
+            </div>
+
+
+
+
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+              <button type = "submit" class="btn btn-primary" id = "submit">บันทึก</button>
+            </div>
+
+          </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+    <script>
+  $('#exampleModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text('New message to ' + recipient)
+    modal.find('.modal-body input').val(recipient)
+    })
+  </script>
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>

@@ -15,13 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="75"
-        android:background="#45dbf8"
+        android:background="#4bb6ef"
         android:orientation="vertical"
         android:gravity="center">
 
         <ImageView
             android:id="@+id/image_user"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/user1"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="5dp"/>
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:textSize="22dp"
             android:text="xxxx xxx"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:layout_gravity="center"/>
 
         <LinearLayout

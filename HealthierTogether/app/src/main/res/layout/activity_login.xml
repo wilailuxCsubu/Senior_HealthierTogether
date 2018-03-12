@@ -27,10 +27,10 @@
             android:text="เข้าสู่ระบบ"/>
 
         <ImageView
-
-            android:layout_width="250dp"
-            android:layout_height="190dp"
-            android:src="@mipmap/ic_launcher_foreground"/>
+            android:layout_marginTop="27dp"
+            android:layout_width="230dp"
+            android:layout_height="170dp"
+            android:src="@drawable/icon_14"/>
 
 
     </LinearLayout>
@@ -56,13 +56,14 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:drawableLeft="@mipmap/ic_user_icon"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:drawablePadding="5dp"
             android:padding="10dp"
             android:id="@+id/userID"
             android:layout_marginBottom="10dp"
             />
         <EditText
+            android:id="@+id/userPw"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="รหัสผ่าน"
@@ -71,17 +72,12 @@
             android:layout_marginEnd="15dp"
             android:layout_marginTop="10dp"
             android:drawableLeft="@mipmap/ic_lock_icon"
-            android:textSize="25dp"
+            android:textSize="22dp"
             android:drawablePadding="5dp"
             android:padding="10dp"
             android:inputType="textPassword"
-            android:id="@+id/userPw"
             android:layout_marginBottom="10dp"
-
             />
-
-
-
 
         <Button
             android:id="@+id/submit"
@@ -95,8 +91,7 @@
             android:layout_gravity="center"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="36dp"
+            android:layout_marginTop="30dp"
             />
 
 
