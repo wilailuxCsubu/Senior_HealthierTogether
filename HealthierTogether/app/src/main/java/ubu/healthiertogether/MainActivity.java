@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,7 +16,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent= getIntent();
+        final String MemberID = intent.getStringExtra("MemberID");
 
+        Toast.makeText(MainActivity.this, "ID : " + MemberID, Toast.LENGTH_SHORT).show();
 
 
         b1 = (CardView) findViewById(R.id.p_sick);
@@ -24,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent P1 = new Intent(MainActivity.this,MySick.class);
-                startActivity(P1);
+                Intent intentMain = new Intent(MainActivity.this,MySick.class);
+                startActivity(intentMain);
 
             }
         });

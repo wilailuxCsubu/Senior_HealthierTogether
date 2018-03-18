@@ -46,6 +46,7 @@ import java.util.HashMap;
 
 public class MySick extends AppCompatActivity {
 
+
     public static final int DIALOG_DOWNLOAD_JSON_PROGRESS = 0;
     public static final int DIALOG_DOWNLOAD_FULL_PHOTO_PROGRESS = 1;
     private ProgressDialog mProgressDialog;
@@ -103,14 +104,21 @@ public class MySick extends AppCompatActivity {
         lstView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                String strImageName = MyArrList.get(position).get("Name").toString();
+                String strName = MyArrList.get(position).get("Name").toString();
+                String strImage = MyArrList.get(position).get("img2").toString();
+                String strAge = MyArrList.get(position).get("age").toString();
+                String strResult = MyArrList.get(position).get("result").toString();
+                String strHN = MyArrList.get(position).get("HN").toString();
+                String struserID = MyArrList.get(position).get("userID").toString();
 
                 Intent newActivity = new Intent(MySick.this,Personal_user.class);
-                newActivity.putExtra("Name", strImageName);
+                newActivity.putExtra("Name", strName);
+                newActivity.putExtra("img", strImage);
+                newActivity.putExtra("age", strAge);
+                newActivity.putExtra("result", strResult);
+                newActivity.putExtra("HN", strHN);
+                newActivity.putExtra("userID", struserID);
                 startActivity(newActivity);
-
-
-
             }
         });
 
@@ -206,14 +214,19 @@ public class MySick extends AppCompatActivity {
                     map = new HashMap<String, Object>();
 
                     map.put("Name", (String)c.getString("Name"));
+                    map.put("age", (String)c.getString("age"));
+                    map.put("result", (String)c.getString("result"));
+                    map.put("date_new", (String)c.getString("date_new"));
+                    map.put("HN", (String)c.getString("HN"));
+                    map.put("userID", (String)c.getString("userID"));
+
 
                     // Thumbnail Get ImageBitmap To Object
-                    map.put("img", (String)c.getString("img"));
+                    map.put("img2", (String)c.getString("img"));
                     map.put("img", (Bitmap)loadBitmap(c.getString("img")));
 //
 //                    // Full (for View Popup)
 //                    map.put("img2", (String)c.getString("img"));
-
 
                     MyArrList.add(map);
                 }
@@ -313,16 +326,5 @@ public class MySick extends AppCompatActivity {
         }
     }
     /***** Get Image Resource from URL (End) *****/
-
-
-
-
-
-
-    public void doBack(View v){
-        Intent i = new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(i);
-    }
-
 
 }

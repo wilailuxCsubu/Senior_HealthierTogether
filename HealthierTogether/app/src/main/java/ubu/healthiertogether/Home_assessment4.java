@@ -21,10 +21,16 @@ public class Home_assessment4 extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         final int result3 = bundle.getInt("Value3");
+        Intent intent= getIntent();
+        final String HN = intent.getStringExtra("HN");
+        final String userID = intent.getStringExtra("userID");
 
 
-        Toast toast = Toast.makeText ( Home_assessment4.this, "result =  " + result3, Toast.LENGTH_LONG );
+        Toast toast = Toast.makeText ( Home_assessment4.this, "result =  " + result3 +"\n" +
+                "HN :  =  " + HN +"\n" +"userID : " + userID, Toast.LENGTH_LONG );
         toast.show ( );
+
+
 
         ch0 = (RadioButton)findViewById(R.id.ch0);
         ch1 = (RadioButton)findViewById(R.id.ch1);
@@ -42,6 +48,8 @@ public class Home_assessment4 extends AppCompatActivity {
                 toast.show ( );*/
                 Intent intent = new Intent(Home_assessment4.this, Home_assessment5.class);
                 intent.putExtra("Value4", result4);
+                intent.putExtra("HN",HN);
+                intent.putExtra("userID",userID);
                 startActivity(intent);
 
             }

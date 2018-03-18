@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class Home_assessment extends AppCompatActivity {
     Button btn ;
@@ -22,6 +23,14 @@ public class Home_assessment extends AppCompatActivity {
         ch2 = (RadioButton)findViewById(R.id.ch2);
         ch3 = (RadioButton)findViewById(R.id.ch3);
 
+        Intent intent= getIntent();
+        final String HN = intent.getStringExtra("HN");
+        final String userID = intent.getStringExtra("userID");
+
+        Toast toast = Toast.makeText ( Home_assessment.this, "HN :  =  " + HN +"\n"
+                +"userID : " + userID, Toast.LENGTH_LONG );
+        toast.show ( );
+
         btn = (Button) findViewById(R.id.submit);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -31,6 +40,8 @@ public class Home_assessment extends AppCompatActivity {
                 toast.show ( );*/
                 Intent intent = new Intent(Home_assessment.this, Home_assessment1.class);
                 intent.putExtra("Value", result);
+                intent.putExtra("HN",HN);
+                intent.putExtra("userID",userID);
                 startActivity(intent);
 
             }
