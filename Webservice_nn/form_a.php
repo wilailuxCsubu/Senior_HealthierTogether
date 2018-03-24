@@ -13,7 +13,7 @@ $pw = $_POST["pw"];
 
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -27,7 +27,7 @@ VALUES ('$n','$l','$ag','$p','$u','$c','$pw')";
 
 
 if ($conn->query($sql) === TRUE) {
-    header("location:genogram.php");
+    header("location:authorities.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

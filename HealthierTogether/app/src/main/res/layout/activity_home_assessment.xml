@@ -27,8 +27,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="INHOMESSS"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="5dp"
                 android:textColor="#000"
+                android:textSize="23dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1/10"
+                android:layout_marginBottom="15dp"
+                android:textColor="#919090"
                 android:textSize="23dp" />
 
             <android.support.v7.widget.CardView
@@ -56,6 +65,7 @@
                         android:paddingBottom="5dp"/>
 
                     <RadioGroup
+                        android:id="@+id/gch"
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -64,6 +74,7 @@
 
                         <RadioButton
                             android:id="@+id/ch0"
+                            android:checked="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ไม่สามารถตักอาหารเข้าปากได้"
@@ -73,6 +84,7 @@
 
                         <RadioButton
                             android:id="@+id/ch1"
+                            android:checked="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ตักอาหารเองได้ แต่ต้องมีคนช่วย"
@@ -82,6 +94,7 @@
 
                         <RadioButton
                             android:id="@+id/ch2"
+                            android:checked="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ตักอาหารช่วยตัวเองได้ปกติ"

@@ -117,18 +117,20 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <?php
-    include "config.php";
-    $objConnect = mysql_connect("$servername","$username","$password") or die("Error Connect to Database");
-    $objDB = mysql_select_db("$dbname");
-    $strSQL = "SELECT patient.HN,CONCAT(patient.Name,' ',patient.Last) AS name_p,
-              patient.age,CONCAT(authorities.Name,' ',authorities.Last) AS name_a,
-              assessment.result,MAX(assessment.date) AS date_n From patient
-              INNER JOIN authorities ON patient.userID = authorities.userID
-              INNER JOIN assessment ON  patient.HN = assessment.HN GROUP BY name_p ORDER BY date_n DESC";
-    $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]")
+     <?
+      include "config.php";
+      $objConnect = mysqli_connect($servername, $username, $password, $database)or die("Error Connect to Database");
+    //   $objDB = mysqli_select_db("$database");
+      $strSQL = "SELECT patient.HN,CONCAT(patient.Name,' ',patient.Last) AS name_p,
+                patient.age,CONCAT(authorities.Name,' ',authorities.Last) AS name_a,
+                assessment.result,MAX(assessment.date_n) AS date_new From patient
+                INNER JOIN authorities ON patient.userID = authorities.userID
+                INNER JOIN assessment ON  patient.HN = assessment.HN GROUP BY assessment.HN ORDER BY date_new DESC";
+      $objQuery = mysqli_query($objConnect,$strSQL) or die ("Error Query [".$strSQL."]")
 
-    ?>
+
+
+      ?>
 
         <div id="page-wrapper">
             <div class="row">
@@ -137,9 +139,6 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-
-            <center><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">เพิ่มรายชื่อ <i class="fa fa-user-plus"></i></button></center>
-                    <br>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -150,7 +149,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                           <form action="profile_p.php" method="post">
-                            <table width="100%" class="table table-bordered " id="dataTables-example" style="font-size:17px">
+                            <table width="100%" class="table table-bordered" id="dataTables-example" style="font-size:17px">
                                 <thead>
                                     <tr>
                                       <th>ชื่อ</th>
@@ -161,16 +160,23 @@
                                     </tr>
                                 </thead>
                                 <?php
-                while($objResult = mysql_fetch_array($objQuery)){
+                while($objResult = mysqli_fetch_array($objQuery)){
+                    $date=$objResult["date_new"];
+                     $strSQL2 = "SELECT * From assessment WHERE date_n='$date'";
+      $objQuery2 = mysqli_query($objConnect,$strSQL2) or die ("Error Query [".$strSQL2."]");
+
+      $objResult2 =  mysqli_fetch_array($objQuery2);
+
+
                 ?>
                                 <tbody >
-                                    <tr >
+                                    <tr class="odd gradeX">
                                       <!-- <button type="button" class="btn btn-outline btn-info">Info</button> -->
                                       <td><input name="name" onclick="myFunction()" class="btn btn-outline btn-info" type="submit" value="<?php echo $objResult["name_p"];?>" style="font-size:17px"></td>
                                       <td><?php echo $objResult["age"];?></td>
                                       <td><?php echo $objResult["name_a"];?></td>
-                                      <td><?php echo $objResult["result"];?></td>
-                                      <td><?php echo $objResult["date_n"];?></td>
+                                      <td><?php echo $objResult2["result"];?></td>
+                                      <td><?php echo $objResult["date_new"];?></td>
                                     </tr>
 
                                 </tbody>
@@ -182,7 +188,7 @@
                             <!-- /.table-responsive -->
 
                             <?php
-                mysql_close($objConnect);
+                mysqli_close($objConnect);
                 ?>
 
                         </div>

@@ -41,7 +41,7 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "INSERT INTO geno_family(name, sex, age, mom, father, wife, husband)
+$sql = "INSERT INTO genogram(name, sex, age, mom, father, wife, husband)
 VALUES ('$n','$s','$ag','$m','$f','$ux','$vir')";
 
 

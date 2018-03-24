@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class Home_assessment extends AppCompatActivity {
     Button btn ;
-    RadioButton ch0,ch1,ch2,ch3;
+    RadioButton ch0,ch1,ch2,ch3,selectedRadioButton;
     int result=0;
 
     @Override
@@ -23,9 +24,14 @@ public class Home_assessment extends AppCompatActivity {
         ch2 = (RadioButton)findViewById(R.id.ch2);
         ch3 = (RadioButton)findViewById(R.id.ch3);
 
+        final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.gch);
+//        int selectedId = radioGroup.getCheckedRadioButtonId();
+//        selectedRadioButton = (RadioButton)findViewById(selectedId);
+
         Intent intent= getIntent();
         final String HN = intent.getStringExtra("HN");
         final String userID = intent.getStringExtra("userID");
+
 
         Toast toast = Toast.makeText ( Home_assessment.this, "HN :  =  " + HN +"\n"
                 +"userID : " + userID, Toast.LENGTH_LONG );
@@ -34,15 +40,26 @@ public class Home_assessment extends AppCompatActivity {
         btn = (Button) findViewById(R.id.submit);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Choice();
+
+                if (radioGroup.getCheckedRadioButtonId() == -1)
+                {
+                    Toast toast = Toast.makeText ( Home_assessment.this, "กรุณากรอกข้อมูล" , Toast.LENGTH_LONG );
+                    toast.show ( );
+                }
+                else
+                {
+                    Choice();
 /*
                 Toast toast = Toast.makeText ( Home_assessment.this, "Checked " + sum, Toast.LENGTH_LONG );
                 toast.show ( );*/
-                Intent intent = new Intent(Home_assessment.this, Home_assessment1.class);
-                intent.putExtra("Value", result);
-                intent.putExtra("HN",HN);
-                intent.putExtra("userID",userID);
-                startActivity(intent);
+                    Intent intent = new Intent(Home_assessment.this, Home_assessment1.class);
+                    intent.putExtra("Value", result);
+                    intent.putExtra("HN",HN);
+                    intent.putExtra("userID",userID);
+                    startActivity(intent);
+                }
+
+
 
             }
         });

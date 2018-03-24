@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +24,6 @@
             android:name=".Home_assessment"
             android:label="@string/Home_assessment"
             android:parentActivityName=".MainActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -111,7 +109,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Home_assessment1"
@@ -224,7 +221,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Result"></activity>
+        <activity android:name=".Result" />
+        <activity android:name=".Patient" />
+        <activity
+            android:name=".Webviwe_genogram"
+            android:label=" ผังครอบครัว"
+            android:parentActivityName=".Personal_user">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MySick" />
+        </activity>
+
     </application>
 
 </manifest>

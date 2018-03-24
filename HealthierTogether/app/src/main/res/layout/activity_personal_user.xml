@@ -126,7 +126,7 @@
 
             <TextView
                 android:id="@+id/homeAss"
-                android:text="เยี่มบ้าน"
+                android:text="ประเมินความเสี่ยง          "
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
@@ -150,6 +150,7 @@
                 android:layout_margin="5dp"/>
 
             <TextView
+                android:onClick="toUrl"
                 android:text="ผังครอบครัว"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

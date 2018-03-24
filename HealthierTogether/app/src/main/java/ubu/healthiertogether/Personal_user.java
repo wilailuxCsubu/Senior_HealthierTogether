@@ -102,5 +102,12 @@ public class Personal_user extends AppCompatActivity {
 
     }
 
+    public void toUrl (View v){
+        Intent intent = new Intent(this, Webviwe_genogram.class);
+        startActivity(intent);
+
+
+    }
+
 
 }

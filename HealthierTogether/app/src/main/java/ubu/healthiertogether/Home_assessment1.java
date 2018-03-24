@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class Home_assessment1 extends AppCompatActivity {
@@ -23,6 +24,8 @@ public class Home_assessment1 extends AppCompatActivity {
         Intent intent= getIntent();
         final String HN = intent.getStringExtra("HN");
         final String userID = intent.getStringExtra("userID");
+
+        final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.gch);
 //        final int result = intent.getIntExtra("00",);
 
         final int result = bundle.getInt("Value");
@@ -41,16 +44,26 @@ public class Home_assessment1 extends AppCompatActivity {
 
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Choice();
+                if (radioGroup.getCheckedRadioButtonId() == -1)
+                {
+                    Toast toast = Toast.makeText ( Home_assessment1.this, "กรุณากรอกข้อมูล" , Toast.LENGTH_LONG );
+                    toast.show ( );
+                }
+                else {
+                    Choice();
 
-                result1 = result + result1 ;
+                    result1 = result + result1 ;
                 /*Toast toast = Toast.makeText ( Home_assessment1.this, "Checked " + result1, Toast.LENGTH_LONG );
                 toast.show ( );*/
-                Intent intent = new Intent(Home_assessment1.this, Home_assessment2.class);
-                intent.putExtra("Value1", result1);
-                intent.putExtra("HN",HN);
-                intent.putExtra("userID",userID);
-                startActivity(intent);
+                    Intent intent = new Intent(Home_assessment1.this, Home_assessment2.class);
+                    intent.putExtra("Value1", result1);
+                    intent.putExtra("HN",HN);
+                    intent.putExtra("userID",userID);
+                    startActivity(intent);
+
+                }
+
+
 
             }
         });

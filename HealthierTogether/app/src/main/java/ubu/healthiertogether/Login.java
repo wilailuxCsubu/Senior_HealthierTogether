@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String url = "http://aorair.esy.es/api/checkLogin.php";
+                String url = "http://aorair.esy.es/api/checkLogin_n.php";
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("strUser", userID.getText().toString()));
                 params.add(new BasicNameValuePair("strPass", Pw.getText().toString()));
@@ -66,6 +66,7 @@ public class Login extends AppCompatActivity {
                 /*** Default Value ***/
                 String strStatusID = "0";
                 String strMemberID = "0";
+                String strType = "";
                 String strError = "ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถูกต้อง!";
 
                 JSONObject c;
@@ -74,6 +75,7 @@ public class Login extends AppCompatActivity {
                     strStatusID = c.getString("StatusID");
                     strMemberID = c.getString("MemberID");
                     strError = c.getString("Error");
+                    strType = c.getString("type");
 
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
@@ -92,7 +94,7 @@ public class Login extends AppCompatActivity {
                     userID.setText("");
                     Pw.setText("");
                 }
-                else
+                if(strType.equals("authorities"))
                 {
 //                    Toast.makeText(Login.this, "Login OK " + strMemberID, Toast.LENGTH_SHORT).show();
                     Intent intentMain = new Intent(Login.this,MainActivity.class);
@@ -104,6 +106,19 @@ public class Login extends AppCompatActivity {
 //                    startActivity(intent_homeass);
 
                 }
+                if(strType.equals("patient"))
+                {
+//                    Toast.makeText(Login.this, "Login OK " + strMemberID, Toast.LENGTH_SHORT).show();
+                    Intent intentMain = new Intent(Login.this,Patient.class);
+                    intentMain.putExtra("MemberID", strMemberID);
+                    startActivity(intentMain);
+
+//                    Intent intent_homeass = new Intent(Login.this,MainActivity.class);
+//                    intent_homeass.putExtra("MemberID", strMemberID);
+//                    startActivity(intent_homeass);
+
+                }
+
 
 
 

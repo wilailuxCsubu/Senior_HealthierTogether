@@ -119,10 +119,9 @@
 
         <?php
     include "config.php";
-    $objConnect = mysql_connect("$servername","$username","$password") or die("Error Connect to Database");
-    $objDB = mysql_select_db("$dbname");
+    $objConnect = mysqli_connect("$servername","$username","$password","$database") or die("Error Connect to Database");
     $strSQL = "SELECT CONCAT(Name,' ',Last) AS name_a ,age ,Position ,Under ,callNum  From authorities ";
-    $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]")
+    $objQuery = mysqli_query($objConnect,$strSQL) or die ("Error Query [".$strSQL."]")
 
     ?>
 
@@ -156,7 +155,7 @@
                                     </tr>
                                 </thead>
                                 <?php
-                while($objResult = mysql_fetch_array($objQuery)){
+                while($objResult = mysqli_fetch_array($objQuery)){
                 ?>
                                 <tbody >
                                     <tr >
@@ -177,7 +176,7 @@
                             <!-- /.table-responsive -->
 
                             <?php
-                mysql_close($objConnect);
+                mysqli_close($objConnect);
                 ?>
 
                         </div>

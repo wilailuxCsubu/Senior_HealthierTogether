@@ -2,6 +2,6 @@
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "senior_healthiertogether";
+$database = "senior_healthiertogether";
 
 ?>

@@ -62,8 +62,6 @@
               $(GenogramLayout, { direction: 90, layerSpacing: 30, columnSpacing: 10 })
           });
 
-
-
           myDiagram.addDiagramListener("Modified", function(e) {
             var button = document.getElementById("SaveButton");
             if (button) button.disabled = !myDiagram.isModified;
@@ -80,31 +78,89 @@
       myDiagram.nodeTemplateMap.add("M",  // male
         $(go.Node, "Vertical",
           { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
-          $(go.Panel,
+          $(go.Panel, "Auto",
             { name: "ICON" },
             $(go.Shape, "Square",
               { width: 50, height: 50, strokeWidth: 2, fill: "white", portId: "" }),
-
+              $(go.Shape, "Square", { width: 35, height: 35, fill: "white" },
+                new go.Binding("stroke", "color" , function(err) { return err ? "black" : "White" }),
+              ),
           ),
-          $(go.TextBlock,
-              { textAlign: "center", maxSize: new go.Size(200, NaN),editable: true, margin:3,font:"bold 11pt serif"},
-            new go.Binding("text", "n").makeTwoWay()),
+
+          $(go.Panel, "Horizontal",  // the row of status indicators
+             // makeIndicator("ind"),
+             $(go.Shape, "Circle",
+                { alignment: go.Spot.Center,
+                  fill: "red", width: 14, height: 14,
+                  visible: false },
+                new go.Binding("visible", "dia", function(i) { return i ? true : false; })),
+
+              $(go.Shape, "Circle",
+                   { alignment: go.Spot.Center,
+                     fill: "blue", width: 14, height: 14,
+                     visible: false },
+                   new go.Binding("visible", "hyper" , function(i) { return i ? true : false; })),
+
+             $(go.TextBlock,
+                 { textAlign: "center", maxSize: new go.Size(200, NaN),editable: true, margin:3,font:"bold 11pt serif"},
+               new go.Binding("text", "n")),
+
+           ),  // end Horizontal Panel
+
             $(go.TextBlock,
               { textAlign: "center",stroke: "green", maxSize: new go.Size(150, NaN), editable: true },
-              new go.Binding("text", "ag").makeTwoWay())
+              new go.Binding("text", "ag")),
+              // $(go.Panel,   // the row of status indicators
+              //    makeIndicator("ind")
+              //  ),  // end Horizontal Panel
+
+
         ));
+        // $(go.Panel, "Horizontal",  // the row of status indicators
+        //    makeIndicator("ind0"),
+        //    makeIndicator("ind1"),
+        //    makeIndicator("ind2")
+        //  ),  // end Horizontal Panel
 
       myDiagram.nodeTemplateMap.add("F",  // female
         $(go.Node, "Vertical",
           { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
-          $(go.Panel,
+          $(go.Panel, "Auto",
             { name: "ICON" },
             $(go.Shape, "Circle",
               { width: 50, height: 50, strokeWidth: 2, fill: "white", portId: "" }),
+              $(go.Shape, "Circle", { width: 35, height: 35, fill: "white" },
+                new go.Binding("stroke", "color" , function(err) { return err ? "black" : "White" }),
+              ),
           ),
-          $(go.TextBlock,
-            { textAlign: "center", maxSize: new go.Size(200, NaN),editable: true, margin:3,font:"bold 11pt serif"},
-            new go.Binding("text", "n").makeTwoWay()),
+
+          // $(go.Panel, "Auto",
+          //   $(go.Shape, "Circle", { name: "SHAPE", width: 50, height: 50, fill: "white",strokeWidth: 2 }),
+          //   // $(go.Shape, "Circle", { width: 35, height: 35, fill: "white" }),
+          //   // new go.Binding("stroke", "color")
+          // ),
+
+
+          $(go.Panel, "Horizontal",  // the row of status indicators
+             // makeIndicator("ind"),
+             $(go.Shape, "Circle",
+                { alignment: go.Spot.Center,
+                  fill: "red", width: 14, height: 14,
+                  visible: false },
+                new go.Binding("visible", "dia", function(i) { return i ? true : false; })),
+
+              $(go.Shape, "Circle",
+                   { alignment: go.Spot.Center,
+                     fill: "blue", width: 14, height: 14,
+                     visible: false },
+                   new go.Binding("visible", "hyper" , function(i) { return i ? true : false; })),
+
+             $(go.TextBlock,
+                 { textAlign: "center", maxSize: new go.Size(200, NaN),editable: true, margin:3,font:"bold 11pt serif"},
+               new go.Binding("text", "n"))
+
+           ),  // end Horizontal Panel
+
             $(go.TextBlock,
               { textAlign: "center",stroke: "green", maxSize: new go.Size(150, NaN),editable: true },
               new go.Binding("text", "ag").makeTwoWay())
@@ -134,6 +190,9 @@
           { selectable: false },
           $(go.Shape, { strokeWidth: 2, stroke: "blue" })
       ));
+
+
+
 
       setupDiagram(myDiagram,dataj);
 
@@ -555,25 +614,45 @@
   define('PASS','root'); //password
   define('DB','senior_healthiertogether'); // ชื่อ database ที่จะติดต่อ
 
+  // echo "$b = date('Y')";
+
    if($_SERVER['REQUEST_METHOD']=='GET'){
     $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect'); //ต่อฐานข้อมูล
 
     mysqli_set_charset($con,"utf8");
 
-    $sql = "SELECT * FROM geno_family ";
+    $sql = "SELECT * FROM genogram ";
 
     $r = mysqli_query($con,$sql);
     $result = array();
       while($row = mysqli_fetch_array($r)) {
+        $b=$row["byear"];
+        $y=date("Y")-$b;
+
+
           array_push($result,array(
             "key"=>$row['key_no'],
             "n"=>$row["name"],
             "s"=>$row["sex"],
-            "ag"=>$row["age"],
+            "ag"=>$y,
+            //
+            // "m"=>$row["mom"],
+            // "f"=>$row["father"],
+            // "ux"=>$row["wife"],
+            // "vir"=>$row["husband"],
+            // "dia"=>$row["diabetes"],
+            // "hyper"=>$row["hyper"],
+            // "color"=>$row["fig"]
+
             "m"=>$row["mom"]?$row["mom"]:'',
             "f"=>$row["father"]?$row["father"]:'',
             "ux"=>$row["wife"]?$row["wife"]:'',
-            "vir"=>$row["husband"]?$row["husband"]:''
+            "vir"=>$row["husband"]?$row["husband"]:'',
+            "dia"=>$row["diabetes"]?$row["diabetes"]:'',
+            "hyper"=>$row["hyper"]?$row["hyper"]:'',
+            "color"=>$row["fig"]?$row["fig"]:''
+
+
           ));
       }
     $myJSON = json_encode(($result),JSON_UNESCAPED_UNICODE);
@@ -677,14 +756,16 @@
             <div class="row">
                 <div class="col-lg-12">
                   <br>  <br>
-                  <ul class="nav nav-tabs" style="font-size:20px">
-                      <li ><a href="profile_p.php" >ข้อมูลประวัต</a>
+                    <div class="col-md-12">
+                      <ul class="nav nav-tabs" style="font-size:16px">
+                      <li ><a href="profile_p.php" >ข้อมูลประวัติ</a>
                       </li>
                       <li class="active"><a href="genogram.php">ผังครอบครัว</a>
                       </li>
                       <li><a href="#messages">รายงานผล</a>
                       </li>
-                  </ul>
+                    </ul>
+                  </div>
   <br>  <br>
 
 
@@ -701,38 +782,49 @@
     <div class="modal-body">
       <form method="post" action="form_genogram.php">
         <div class="row">
+            <div class="form-group col-md-12" style="font-size:17px">
+            <div class="form-group col-md-10">
+            <label for = "man"></label>เลือกประเภท : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type = "radio" name ="fig" id = "t" value = "1"/> เจ้าของผังเครือญาติ
+            <label for = "Lady"></label>&nbsp;&nbsp;
+            <input type = "radio" name ="fig" id = "f" value = "0"/> สมาชิก
+              </div>
+          </div>
+        </div>
+        <div class="row">
           <div class="form-group col-md-7 ">
             <label for="recipient-name" class="form-control-label">ชื่อ:</label>
             <input type = "text" class = "form-control" name= "name">
           </div>
           <div class="form-group col-md-3">
-            <label for="message-text" class="form-control-label">อายุ:</label>
-            <select class="form-control" name= "ag">
+            <label for="message-text" class="form-control-label">ปีที่เกิด :</label>
+            <select class="form-control" name= "byear">
               <!-- <option></option> -->
               <?php
-              for($i=1; $i<=200 ;$i++){
+              for($i=1918; $i<=2018 ;$i++){
                   echo "<option value=$i>$i</option>";
               }
               ?>
             </select>
             <!-- <input type = "number" class = "form-control" name= "ag"> -->
           </div>
+
         </div>
 
         <div class="row">
         <div class="form-group col-md-5">
           <?php
           include "config.php";
-          $objConnect = mysql_connect("$servername","$username","$password") or die("Error Connect to Database");
-          $objDB = mysql_select_db("$dbname");
-          $strSQL = "SELECT * From geno_family WHERE wife =0  AND husband =0 AND sex ='M' ";
-          $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]")
+          $objConnect = mysqli_connect("$servername","$username","$password","$dbname") or die("Error Connect to Database");
+          // $objDB = mysql_select_db("$dbname");
+          $strSQL = "SELECT * From genogram WHERE wife =''  AND husband ='' AND sex ='M' ";
+          $objQuery = mysqli_query($objConnect,$strSQL) or die ("Error Query [".$strSQL."]")
           ?>
           <label for="message-text" class="form-control-label">สามี</label>
           <select class="form-control" name= "vir">
-            <option value=" "></option>
+            <option value="0"></option>
             <?php
-            while($objResult = mysql_fetch_array($objQuery)){
+            while($objResult = mysqli_fetch_array($objQuery)){
             ?>
             <option value="<?php echo $objResult["key_no"];?>"><?php echo $objResult["name"];?></option>
             <?php
@@ -741,7 +833,7 @@
           </select>
         </div>
         <?php
-        mysql_close($objConnect);
+        mysqli_close($objConnect);
         ?>
 
         <div class="form-group col-md-2">
@@ -757,16 +849,16 @@
         <div class="form-group col-md-5">
           <?php
           include "config.php";
-          $objConnect = mysql_connect("$servername","$username","$password") or die("Error Connect to Database");
-          $objDB = mysql_select_db("$dbname");
-          $strSQL = "SELECT * From geno_family WHERE wife =0 AND husband =0 AND sex ='F' ";
-          $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]")
+          $objConnect = mysqli_connect("$servername","$username","$password","$dbname") or die("Error Connect to Database");
+          // $objDB = mysql_select_db("$dbname");
+          $strSQL = "SELECT * From genogram WHERE wife = '' AND husband ='' AND sex ='F' ";
+          $objQuery = mysqli_query($objConnect,$strSQL) or die ("Error Query [".$strSQL."]")
           ?>
           <label for="message-text" class="form-control-label">ภรรยา</label>
           <select class="form-control" name= "ux">
-            <option value=" "></option>
+            <option value="0"></option>
             <?php
-            while($objResult = mysql_fetch_array($objQuery)){
+            while($objResult = mysqli_fetch_array($objQuery)){
             ?>
             <option value="<?php echo $objResult["key_no"];?>"><?php echo $objResult["name"];?></option>
             <?php
@@ -776,28 +868,53 @@
         </div>
 
         <?php
-        mysql_close($objConnect);
+        mysqli_close($objConnect);
         ?>
 
       </div>
 
 
       <div class="row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-5">
             <?php
             include "config.php";
-            $objConnect = mysql_connect("$servername","$username","$password") or die("Error Connect to Database");
-            $objDB = mysql_select_db("$dbname");
-            $strSQL = "SELECT * From geno_family WHERE sex ='M' ";
-            $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]")
+            $objConnect = mysqli_connect("$servername","$username","$password","$dbname") or die("Error Connect to Database");
+            // $objDB = mysql_select_db("$dbname");
+            $strSQL = "SELECT * From genogram WHERE sex ='M' ";
+            $objQuery = mysqli_query($objConnect,$strSQL) or die ("Error Query [".$strSQL."]")
             ?>
             <label for="message-text" class="form-control-label">พ่อ</label>
             <!-- <input type = "number" class = "form-control" name= "fater"> -->
 
             <select class="form-control" name= "fater">
-              <option value=" "></option>
+              <option value="0"></option>
               <?php
-              while($objResult = mysql_fetch_array($objQuery)){
+              while($objResult = mysqli_fetch_array($objQuery)){
+              ?>
+              <option value="<?php echo $objResult["key_no"];?>"><?php echo $objResult["name"];?></option>
+              <?php
+              }
+              ?>
+            </select>
+
+          </div>
+          <?php
+          mysqli_close($objConnect);
+          ?>
+
+          <div class="form-group col-md-5">
+            <?php
+            include "config.php";
+            $objConnect = mysqli_connect("$servername","$username","$password","$dbname") or die("Error Connect to Database");
+            // $objDB = mysql_select_db("$dbname");
+            $strSQL = "SELECT * From genogram WHERE sex ='F' ";
+            $objQuery = mysqli_query($objConnect,$strSQL) or die ("Error Query [".$strSQL."]")
+            ?>
+            <label for="message-text" class="form-control-label">แม่</label>
+            <select class="form-control" name= "mom">
+              <option value="0"></option>
+              <?php
+              while($objResult = mysqli_fetch_array($objQuery)){
               ?>
               <option value="<?php echo $objResult["key_no"];?>"><?php echo $objResult["name"];?></option>
               <?php
@@ -808,39 +925,19 @@
           </div>
 
         </div>
-          <?php
-          mysql_close($objConnect);
-          ?>
+
         <div class="row">
-          <div class="form-group col-md-6">
-            <?php
-            include "config.php";
-            $objConnect = mysql_connect("$servername","$username","$password") or die("Error Connect to Database");
-            $objDB = mysql_select_db("$dbname");
-            $strSQL = "SELECT * From geno_family WHERE sex ='F' ";
-            $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]")
-            ?>
-            <label for="message-text" class="form-control-label">แม่</label>
-            <select class="form-control" name= "mom">
-              <option value=" "></option>
-              <?php
-              while($objResult = mysql_fetch_array($objQuery)){
-              ?>
-              <option value="<?php echo $objResult["key_no"];?>"><?php echo $objResult["name"];?></option>
-              <?php
-              }
-              ?>
-            </select>
 
-          </div>
+
           </div>
 
 
           <?php
-          mysql_close($objConnect);
+          mysqli_close($objConnect);
           ?>
 
-          <div class="row">
+          <br>
+          <div class="row" style="font-size:17px">
           <div class="form-group col-md-10">
           <label for = "man"></label>เพศ : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input type = "radio" name ="sex" id = "M" value = "M"/> ชาย
@@ -848,8 +945,27 @@
           <input type = "radio" name ="sex" id = "F" value = "F"/> หญิง
             </div>
 
-        </div>
+        </div><hr>
+          <div class="row" style="font-size:17px">
+          <div class="form-group col-md-10">
+          <label ></label>เป็นโรคเบาหวานหรือไม่ ? : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type = "radio" name ="dia"  value = "1"/> เป็น
+          <label ></label>&nbsp;&nbsp;
+          <input type = "radio" name ="dia"  value = "1"/> ไม่เป็น
+            </div>
+
           </div>
+
+          <div class="row" style="font-size:17px">
+          <div class="form-group col-md-10">
+          <label ></label>เป็นโรคความดันหรือไม่ ? : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type = "radio" name ="hyper" id = "y" value = "1"/> เป็น
+          <label ></label>&nbsp;&nbsp;
+          <input type = "radio" name ="hyper" id = "n" value = "0"/> ไม่เป็น
+            </div>
+
+          </div>
+        </div>
 
 
           <div class="modal-footer">
@@ -867,14 +983,60 @@
               <!-- Icon Cards-->
             <div class="container">
             <div class="row">
+
               <!-- <div class="col-md-12">
                 <button onclick="load()">Load</button>
               </div> -->
+              <br>
       <center><button type="button" class="btn btn-outline btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">เพิ่มสมาชิก <i class="fa fa-user-plus"></i></button></center>
               <br>
-              <div class="col-xl-12">
-                <div id="sample">
-                  <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px">
+
+              <!-- /.row -->
+              <div class="col-md-12 col-sm-12 ">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="font-size:17px">
+                                <!-- <h4>สัญลักษณ์</h4> -->
+                                สัญลักษณ์
+                            </div>
+                            <div class="panel-body">
+                              <center><div class="row" style="font-size:16px">
+                                <div class="col-lg-2 col-sm-2">
+                                  <img class="img-responsive" src="../img/Circle.png" width="52px" height="52px">
+                                  <!-- <img src="../img/Circle.png" width="100px" height="100px"> -->
+                                  <p>ผู้หญิง</p>
+                                </div>
+
+                                <div class="col-lg-2">
+                                  <img class="img-responsive" src="../img/Square.png" width="52px" height="52px">
+                                  <p>ผู้ชาย</p>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <img class="img-responsive" src="../img/fig.jpg" width="110px" height="110px">
+                                  <p>เจ้าของผังเครือญาติ</p>
+                                </div>
+
+                                <div class="col-lg-3">
+                                  <img class="img-responsive" src="../img/blue.png" width="30px" height="30px">
+                                  <p>โรคความดันโลหิตสูง</p>
+                                </div>
+
+                                <div class="col-lg-2">
+                                  <img class="img-responsive" src="../img/red.png" width="30px" height="30px">
+                                  <p>โรคเบาหวาน</p>
+                                </div>
+
+                              </div></center>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                  <div id="myDiagramDiv" style="border: solid 1px black; width:90%; height:550px">
 
                   </div>
                 </div>

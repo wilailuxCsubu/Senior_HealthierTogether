@@ -5,17 +5,24 @@ include "config.php";
 
 $n = $_POST["name"];
 $s = $_POST["sex"];
-$ag = $_POST["ag"];
+// $age = $_POST["age"];
 $m = $_POST["mom"];
 $f = $_POST["fater"];
 $ux = $_POST["ux"];
 $vir = $_POST["vir"];
+$byear = $_POST["byear"];
+
+$fig = $_POST["fig"];
+$dia = $_POST["dia"];
+$hyper = $_POST["hyper"];
+
+// $m = $m ?: 'default';
+// $f = $f ?: 'default';
+// $ux = $ux ?: 'default';
+// $vir = $m ?: 'default';
+// $ux = !empty($ux) ? "'$ux'" : NULL;
 
 
-$m = $m ?: 'default';
-$f = $f ?: 'default';
-$ux = $ux ?: 'default';
-$vir = $m ?: 'default';
 
 
 // Create connection
@@ -28,8 +35,8 @@ if ($conn->connect_error) {
 
 
 
-$sql = "INSERT INTO geno_family(name, sex, age, mom, father, wife, husband)
-VALUES ('$n','$s','$ag','$m','$f','$ux','$vir')";
+$sql = "INSERT INTO genogram(name, sex, mom, father, wife, husband, diabetes, hyper,fig,byear)
+VALUES ('$n','$s','$m','$f','$ux','$vir','$dia','$hyper','$fig','$byear')";
 
 
 if ($conn->query($sql) === TRUE) {
