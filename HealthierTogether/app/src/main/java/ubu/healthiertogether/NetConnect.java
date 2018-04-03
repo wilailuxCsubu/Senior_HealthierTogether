@@ -80,4 +80,31 @@ public class NetConnect {
         }
         return str.toString();
     }
+
+    public static String getJSONUrl(String url, List<NameValuePair> params) {
+        StringBuilder str = new StringBuilder();
+        HttpClient client = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet(url);
+        try {
+            HttpResponse response = client.execute(httpGet);
+            StatusLine statusLine = response.getStatusLine();
+            int statusCode = statusLine.getStatusCode();
+            if (statusCode == 200) { // Download OK
+                HttpEntity entity = response.getEntity();
+                InputStream content = entity.getContent();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    str.append(line);
+                }
+            } else {
+                Log.e("Log", "Failed to download file..");
+            }
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str.toString();
+    }
 }

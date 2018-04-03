@@ -48,29 +48,28 @@ public class Result extends AppCompatActivity {
         final ImageView image = (ImageView)findViewById(R.id.img_re);
         final Button btn = (Button) findViewById(R.id.submit);
 
-        final String get  ;
-        final String score;
+        final String sequence;
 
         if(result9 <= 4){
-            show.setText("ภาวะพึ่งพาโดยสมบูรณ์");
-            score = "4";
+            show.setText("ภาระพึ่งพาโดยสมบูรณ์");
+            sequence = "4";
             image.setImageResource(R.drawable.sad);
 
         }else if(result9 <= 8){
-            show.setText("ภาวะพึ่งพารุนแรง");
-            score = "8";
+            show.setText("ภาระพึ่งพารุนแรง");
+            sequence = "3";
             image.setImageResource(R.drawable.confused);
 
         }else if(result9 <= 11){
-            show.setText("ภาวะพึ่งพาปานกลาง");
-            score = "11";
+            show.setText("ภาระพึ่งพาปานกลาง");
+            sequence = "2";
             image.setImageResource(R.drawable.smiling);
         }else{
-            show.setText("ไม่เป็นภาวะพึ่งพา");
+            show.setText("ไม่เป็นภาระพึ่งพา");
             image.setImageResource(R.drawable.happy);
-            score = "12";
+            sequence = "1";
         }
-        Toast toast = Toast.makeText ( Result.this, "result =  " + score +"\n" +
+        Toast toast = Toast.makeText ( Result.this, "result =  " + sequence +"\n" +
                 "HN :  =  " + HN +"\n" +"userID : " + userID, Toast.LENGTH_LONG );
         toast.show ( );
 
@@ -79,12 +78,12 @@ public class Result extends AppCompatActivity {
         String url = "http://aorair.esy.es/api/get_Howto.php";
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("score", score));
+        params.add(new BasicNameValuePair("sequence", sequence));
 
         String resultServer  = NetConnect.getHttpPost(url,params);
 
 
-        String strScore = "";
+        String strSequence = "";
         String strResult = "";
         String strHowTo = "";
 
@@ -92,11 +91,11 @@ public class Result extends AppCompatActivity {
         JSONObject c;
         try {
             c = new JSONObject(resultServer);
-            strScore = c.getString("score");
+            strSequence = c.getString("sequence");
             strResult = c.getString("result");
             strHowTo = c.getString("subject");
 
-            if(!strScore.equals(""))
+            if(!strSequence.equals(""))
             {
                 howTo.setText(strHowTo);
             }
@@ -141,15 +140,15 @@ public class Result extends AppCompatActivity {
         final String get ;
 
         if(result9 <= 4){
-            get = "ภาวะพึ่งพาโดยสมบูรณ์";
+            get = "ภาระพึ่งพาโดยสมบูรณ์";
 
         }else if(result9 <= 8){
-            get = "ภาวะพึ่งพารุนแรง";
+            get = "ภาระพึ่งพารุนแรง";
 
         }else if(result9 <= 11){
-            get = "ภาวะพึ่งพาปานกลาง";
+            get = "ภาระพึ่งพาปานกลาง";
         }else{
-            get = "ไม่เป็นภาวะพึ่งพา";
+            get = "ไม่เป็นภาระพึ่งพา";
         }
         // Dialog
         final AlertDialog.Builder ad = new AlertDialog.Builder(this);

@@ -20,29 +20,23 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MySick extends AppCompatActivity {
 
@@ -104,20 +98,20 @@ public class MySick extends AppCompatActivity {
         lstView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                String strName = MyArrList.get(position).get("Name").toString();
-                String strImage = MyArrList.get(position).get("img2").toString();
-                String strAge = MyArrList.get(position).get("age").toString();
-                String strResult = MyArrList.get(position).get("result").toString();
+//                String strName = MyArrList.get(position).get("Name").toString();
+//                String strImage = MyArrList.get(position).get("img2").toString();
+//                String strAge = MyArrList.get(position).get("age").toString();
+//                String strResult = MyArrList.get(position).get("result").toString();
                 String strHN = MyArrList.get(position).get("HN").toString();
-                String struserID = MyArrList.get(position).get("userID").toString();
+//                String struserID = MyArrList.get(position).get("userID").toString();
 
                 Intent newActivity = new Intent(MySick.this,Personal_user.class);
-                newActivity.putExtra("Name", strName);
-                newActivity.putExtra("img", strImage);
-                newActivity.putExtra("age", strAge);
-                newActivity.putExtra("result", strResult);
+//                newActivity.putExtra("Name", strName);
+//                newActivity.putExtra("img", strImage);
+//                newActivity.putExtra("age", strAge);
+//                newActivity.putExtra("result", strResult);
                 newActivity.putExtra("HN", strHN);
-                newActivity.putExtra("userID", struserID);
+//                newActivity.putExtra("userID", struserID);
                 startActivity(newActivity);
             }
         });
@@ -179,8 +173,16 @@ public class MySick extends AppCompatActivity {
 
             // ColImgName
             TextView txtPicName = (TextView) convertView.findViewById(R.id.Name);
-            txtPicName.setPadding(50, 0, 0, 0);
+//            txtPicName.setPadding(50, 0, 0, 0);
             txtPicName.setText(MyArr.get(position).get("Name").toString());
+
+            TextView Date = (TextView) convertView.findViewById(R.id.date);
+            Date.setText(MyArr.get(position).get("date_n").toString());
+
+            TextView noID = (TextView) convertView.findViewById(R.id.noID);
+            noID.setText(MyArr.get(position).get("no_id").toString());
+
+
 
             return convertView;
 
@@ -200,11 +202,19 @@ public class MySick extends AppCompatActivity {
         protected Void doInBackground(String... params) {
             // TODO Auto-generated method stub
 
+            Intent intent= getIntent();
+            final String MemberID = intent.getStringExtra("userID");
+
             String url = "http://aorair.esy.es/api/get_sicklist.php";
+
+            List<NameValuePair> param = new ArrayList<NameValuePair>();
+            param.add(new BasicNameValuePair("MemberID", MemberID));
+
+            String resultServer  = NetConnect.getHttpPost(url,param);
 
             JSONArray data;
             try {
-                data = new JSONArray(getJSONUrl(url));
+                data = new JSONArray(resultServer);
 
                 MyArrList = new ArrayList<HashMap<String, Object>>();
                 HashMap<String, Object> map;
@@ -214,15 +224,15 @@ public class MySick extends AppCompatActivity {
                     map = new HashMap<String, Object>();
 
                     map.put("Name", (String)c.getString("Name"));
-                    map.put("age", (String)c.getString("age"));
-                    map.put("result", (String)c.getString("result"));
-                    map.put("date_new", (String)c.getString("date_new"));
+                    map.put("no_id", (String)c.getString("no_id"));
+//                    map.put("result", (String)c.getString("result"));
+                    map.put("date_n", (String)c.getString("date_n"));
                     map.put("HN", (String)c.getString("HN"));
                     map.put("userID", (String)c.getString("userID"));
 
 
                     // Thumbnail Get ImageBitmap To Object
-                    map.put("img2", (String)c.getString("img"));
+//                    map.put("img2", (String)c.getString("img"));
                     map.put("img", (Bitmap)loadBitmap(c.getString("img")));
 //
 //                    // Full (for View Popup)
@@ -249,33 +259,6 @@ public class MySick extends AppCompatActivity {
 
     }
 
-    /*** Get JSON Code from URL ***/
-    public String getJSONUrl(String url) {
-        StringBuilder str = new StringBuilder();
-        HttpClient client = new DefaultHttpClient();
-        HttpGet httpGet = new HttpGet(url);
-        try {
-            HttpResponse response = client.execute(httpGet);
-            StatusLine statusLine = response.getStatusLine();
-            int statusCode = statusLine.getStatusCode();
-            if (statusCode == 200) { // Download OK
-                HttpEntity entity = response.getEntity();
-                InputStream content = entity.getContent();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(content));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    str.append(line);
-                }
-            } else {
-                Log.e("Log", "Failed to download file..");
-            }
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return str.toString();
-    }
 
     /***** Get Image Resource from URL (Start) *****/
     private static final String TAG = "Image";
