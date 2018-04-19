@@ -14,35 +14,33 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="แบบประเมินผู้ป่วยตามหลัก"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="23dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="INHOMESSS"
-            android:layout_marginBottom="5dp"
             android:textColor="#000"
-            android:textSize="23dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="9/10"
-            android:layout_marginBottom="10dp"
             android:textColor="#919090"
-            android:textSize="23dp" />
+            android:textSize="20dp" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:paddingTop="10dp">
+           >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,11 +58,10 @@
 
                 <RadioGroup
                     android:id="@+id/gch"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="20dp">
+                   >
 
                     <RadioButton
                         android:id="@+id/ch0"
@@ -81,7 +78,7 @@
                         android:layout_height="wrap_content"
                         android:text="กลั้นไม่ได้เป็นครั้งคราว น้อยกว่า 1 ครั้งต่อสัปดาห์"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
+
                         android:textSize="23dp" />
 
                     <RadioButton
@@ -90,16 +87,28 @@
                         android:layout_height="wrap_content"
                         android:text="กลั้นได้ปกติ"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginBottom="15dp"
                         android:textSize="23dp"/>
 
 
 
                 </RadioGroup>
 
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="130dp"
+                        android:layout_height="125dp"
+                        android:background="@drawable/i09"/>
+
+
+                </LinearLayout>
+
             </LinearLayout>
         </android.support.v7.widget.CardView>
-
 
 
         <Button
@@ -112,11 +121,9 @@
             android:textStyle="bold"
             android:background="@drawable/register_button"
             android:layout_gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="36dp"
+            android:layout_margin="5dp"
             />
+
 
 
     </LinearLayout>

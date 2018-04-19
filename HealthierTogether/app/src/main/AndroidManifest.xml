@@ -231,6 +231,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MySick" />
         </activity>
+        <activity
+            android:name=".Chart"
+            android:label=" รายงานผล"
+            android:parentActivityName=".Personal_user">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MySick" />
+        </activity>
 
     </application>
 

@@ -15,42 +15,38 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="แบบประเมินผู้ป่วยตามหลัก"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="23dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="INHOMESSS"
-            android:layout_marginBottom="5dp"
             android:textColor="#000"
-            android:textSize="23dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="6/10"
-            android:layout_marginBottom="10dp"
             android:textColor="#919090"
-            android:textSize="23dp" />
+            android:textSize="20dp" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:paddingTop="10dp">
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="25dp"
-                android:paddingTop="22dp"
                 android:layout_margin="15dp">
 
                 <TextView
@@ -59,8 +55,6 @@
                     android:layout_margin="5dp"
                     android:text="การแต่งตัวสวมใส่หรือถอดเสื้อผ้า"
                     android:textColor="#000"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="5dp"
                     android:textSize="25dp" />
 
                 <RadioGroup
@@ -98,14 +92,23 @@
                         android:layout_margin="5dp"
                         android:textSize="23dp"/>
 
-
-
                 </RadioGroup>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="160dp"
+                        android:background="@drawable/i05"/>
+
+
+                </LinearLayout>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
-
-
 
         <Button
             android:id="@+id/submit"
@@ -117,10 +120,7 @@
             android:textStyle="bold"
             android:background="@drawable/register_button"
             android:layout_gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="36dp"
+            android:layout_margin="5dp"
             />
 
 

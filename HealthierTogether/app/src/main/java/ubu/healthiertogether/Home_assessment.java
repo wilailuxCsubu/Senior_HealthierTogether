@@ -33,8 +33,7 @@ public class Home_assessment extends AppCompatActivity {
         final String userID = intent.getStringExtra("userID");
 
 
-        Toast toast = Toast.makeText ( Home_assessment.this, "HN :  =  " + HN +"\n"
-                +"userID : " + userID, Toast.LENGTH_LONG );
+        Toast toast = Toast.makeText ( Home_assessment.this, "HN :  =  " + HN , Toast.LENGTH_LONG );
         toast.show ( );
 
         btn = (Button) findViewById(R.id.submit);
@@ -55,7 +54,6 @@ public class Home_assessment extends AppCompatActivity {
                     Intent intent = new Intent(Home_assessment.this, Home_assessment1.class);
                     intent.putExtra("Value", result);
                     intent.putExtra("HN",HN);
-                    intent.putExtra("userID",userID);
                     startActivity(intent);
                 }
 

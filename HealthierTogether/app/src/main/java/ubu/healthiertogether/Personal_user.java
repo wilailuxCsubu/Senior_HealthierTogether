@@ -1,6 +1,7 @@
 package ubu.healthiertogether;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Personal_user extends AppCompatActivity {
     private ImageView image_user;
@@ -35,48 +43,67 @@ public class Personal_user extends AppCompatActivity {
         final TextView homeAss = (TextView)findViewById(R.id.homeAss);
 
 
-//        String url = "http://www.thaicreate.com/android/getByMemberID.php";
-
         Intent intent= getIntent();
-        final String GetName = intent.getStringExtra("Name");
-        final String url = intent.getStringExtra("img");
-        final String Age = intent.getStringExtra("age");
-        final String Result = intent.getStringExtra("result");
         final String HN = intent.getStringExtra("HN");
-        final String userID = intent.getStringExtra("userID");
 
 
-        tName.setText(GetName);
-        tAge.setText(Age);
-        tResult.setText(Result);
 
-        Toast toast = Toast.makeText ( Personal_user.this, "HN :  =  " + HN +"\n"
-                +"userID : " + userID, Toast.LENGTH_LONG );
+        Toast toast = Toast.makeText ( Personal_user.this, "HN :  =  " + HN , Toast.LENGTH_LONG );
         toast.show ( );
+
+        String url = "http://aorair.esy.es/api/get_Mypatient.php";
+
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("MemberID", HN));
+
+        String resultServer  = NetConnect.getHttpPost(url,params);
+
+        String strAge = "";
+        String strResult = "";
+        Bitmap strImg ;
+        String strName = "";
+        String strHN = "";
+
+
+        JSONObject c;
+        try {
+            c = new JSONObject(resultServer);
+            strAge = c.getString("age");
+            strName = c.getString("name_p");
+            strImg = (Bitmap)ImgBitmap.loadBitmap(c.getString("img"));
+            strResult = c.getString("result");
+            strHN = c.getString("HN");
+
+
+            if(!strHN.equals(""))
+            {
+                tName.setText(strName);
+                tResult.setText(strResult);
+                tAge.setText(strAge);
+                img1.setImageBitmap(strImg);
+            }
+            else
+            {
+                tName.setText("error");
+            }
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         homeAss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
         Intent intentMain = new Intent(Personal_user.this,Home_assessment.class);
-        intentMain.putExtra("HN", HN);
-        intentMain.putExtra("userID", userID);
+        intentMain.putExtra("HN",HN);
         startActivity(intentMain);
 
             }
         });
 
 
-        try {
 
-            img1.setImageDrawable(getResource(url));
-
-        } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
 
     }
 
@@ -97,6 +124,17 @@ public class Personal_user extends AppCompatActivity {
 
     public void nextHis(View v){
         Intent i = new Intent(getApplicationContext(),Patient_history1.class);
+        startActivity(i);
+
+
+    }
+    public void BarChart(View v){
+        Intent intent= getIntent();
+        final String HN = intent.getStringExtra("HN");
+
+        Intent i = new Intent(getApplicationContext(),Chart.class);
+        i.putExtra("HN",HN);
+        startActivity(i);
         startActivity(i);
 
 

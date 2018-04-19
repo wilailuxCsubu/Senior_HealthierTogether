@@ -2,11 +2,9 @@ package ubu.healthiertogether;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,14 +15,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             c = new JSONObject(resultServer);
             strID = c.getString("userID");
             strName = c.getString("name_a");
-            strImg = (Bitmap)loadBitmap(c.getString("Img"));
+            strImg = (Bitmap)ImgBitmap.loadBitmap(c.getString("Img"));
 
 
             if(!strID.equals(""))
@@ -102,55 +92,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    /***** Get Image Resource from URL (Start) *****/
-    private static final String TAG = "Image";
-    private static final int IO_BUFFER_SIZE = 4 * 1024;
-    public static Bitmap loadBitmap(String url) {
-        Bitmap bitmap = null;
-        InputStream in = null;
-        BufferedOutputStream out = null;
 
-        try {
-            in = new BufferedInputStream(new URL(url).openStream(), IO_BUFFER_SIZE);
-
-            final ByteArrayOutputStream dataStream = new ByteArrayOutputStream();
-            out = new BufferedOutputStream(dataStream, IO_BUFFER_SIZE);
-            copy(in, out);
-            out.flush();
-
-            final byte[] data = dataStream.toByteArray();
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            //options.inSampleSize = 1;
-
-            bitmap = BitmapFactory.decodeByteArray(data, 0, data.length,options);
-        } catch (IOException e) {
-            Log.e(TAG, "Could not load Bitmap from: " + url);
-        } finally {
-            closeStream(in);
-            closeStream(out);
-        }
-
-        return bitmap;
-    }
-
-    private static void closeStream(Closeable stream) {
-        if (stream != null) {
-            try {
-                stream.close();
-            } catch (IOException e) {
-                android.util.Log.e(TAG, "Could not close stream", e);
-            }
-        }
-    }
-
-    private static void copy(InputStream in, OutputStream out) throws IOException {
-        byte[] b = new byte[IO_BUFFER_SIZE];
-        int read;
-        while ((read = in.read(b)) != -1) {
-            out.write(b, 0, read);
-        }
-    }
-    /***** Get Image Resource from URL (End) *****/
 
     public void ToMap(View v){
         Intent i = new Intent(getApplicationContext(),MenuMap.class);
