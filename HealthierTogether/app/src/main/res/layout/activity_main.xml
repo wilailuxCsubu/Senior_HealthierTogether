@@ -124,11 +124,11 @@
             >
 
             <LinearLayout
+                android:onClick="ToMap"
                 android:background="@drawable/rounded_white_m"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:onClick="ToMap"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -154,7 +154,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/p_reprot_r"
+            android:id="@+id/Date"
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginTop="15dp"
@@ -168,7 +168,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:onClick="ToMap"
                 android:orientation="horizontal">
 
                 <ImageView

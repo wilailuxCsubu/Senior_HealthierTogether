@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -29,8 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MySick extends AppCompatActivity {
-
+public class MakeDate extends AppCompatActivity {
 
     public static final int DIALOG_DOWNLOAD_JSON_PROGRESS = 0;
     public static final int DIALOG_DOWNLOAD_FULL_PHOTO_PROGRESS = 1;
@@ -41,10 +39,7 @@ public class MySick extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_sick);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setContentView(R.layout.activity_make_date);
 
         // Permission StrictMode
         if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -54,6 +49,9 @@ public class MySick extends AppCompatActivity {
 
         // Download JSON File
         new DownloadJSONFileAsync().execute();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
     }
 
@@ -94,30 +92,30 @@ public class MySick extends AppCompatActivity {
     public void ShowAllContent()
     {
         // listView1
-        final ListView lstView1 = (ListView)findViewById(R.id.listView1);
-        lstView1.setAdapter(new ImageAdapter(MySick.this,MyArrList));
+        final ListView lstView1 = (ListView)findViewById(R.id.listDate);
+        lstView1.setAdapter(new ImageAdapter(MakeDate.this,MyArrList));
 
-        // OnClick
-        lstView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-//                String strName = MyArrList.get(position).get("Name").toString();
-//                String strImage = MyArrList.get(position).get("img2").toString();
-//                String strAge = MyArrList.get(position).get("age").toString();
-//                String strResult = MyArrList.get(position).get("result").toString();
-                String strHN = MyArrList.get(position).get("HN").toString();
-                String struserID = MyArrList.get(position).get("userID").toString();
-
-                Intent newActivity = new Intent(MySick.this,Personal_user.class);
-//                newActivity.putExtra("Name", strName);
-//                newActivity.putExtra("img", strImage);
-//                newActivity.putExtra("age", strAge);
-//                newActivity.putExtra("result", strResult);
-                newActivity.putExtra("HN", strHN);
-                newActivity.putExtra("userID", struserID);
-                startActivity(newActivity);
-            }
-        });
+//        // OnClick
+//        lstView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView<?> parent, View v,
+//                                    int position, long id) {
+////                String strName = MyArrList.get(position).get("Name").toString();
+////                String strImage = MyArrList.get(position).get("img2").toString();
+////                String strAge = MyArrList.get(position).get("age").toString();
+////                String strResult = MyArrList.get(position).get("result").toString();
+//                String strHN = MyArrList.get(position).get("HN").toString();
+////                String struserID = MyArrList.get(position).get("userID").toString();
+//
+//                Intent newActivity = new Intent(MakeDate.this,Personal_user.class);
+////                newActivity.putExtra("Name", strName);
+////                newActivity.putExtra("img", strImage);
+////                newActivity.putExtra("age", strAge);
+////                newActivity.putExtra("result", strResult);
+//                newActivity.putExtra("HN", strHN);
+////                newActivity.putExtra("userID", struserID);
+//                startActivity(newActivity);
+//            }
+//        });
 
     }
 
@@ -155,14 +153,11 @@ public class MySick extends AppCompatActivity {
 
 
             if (convertView == null) {
-                convertView = inflater.inflate(R.layout.costom_list, null);
+                convertView = inflater.inflate(R.layout.costom_date, null);
             }
 
             // ColImage
             ImageView imageView = (ImageView) convertView.findViewById(R.id.img);
-            imageView.getLayoutParams().height = 250;
-            imageView.getLayoutParams().width = 250;
-            imageView.setPadding(5, 5, 5, 5);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             try
             {
@@ -175,16 +170,11 @@ public class MySick extends AppCompatActivity {
 
 
             // ColImgName
-            TextView txtPicName = (TextView) convertView.findViewById(R.id.Name);
-//            txtPicName.setPadding(50, 0, 0, 0);
-            txtPicName.setText(MyArr.get(position).get("Name").toString());
+            TextView txtPicName = (TextView) convertView.findViewById(R.id.nameHN);
+            txtPicName.setText(MyArr.get(position).get("name").toString());
 
-            TextView Date = (TextView) convertView.findViewById(R.id.date);
-            Date.setText(MyArr.get(position).get("date_n").toString());
-
-            TextView noID = (TextView) convertView.findViewById(R.id.noID);
-            noID.setText(MyArr.get(position).get("no_id").toString());
-
+            TextView Date = (TextView) convertView.findViewById(R.id.date_no);
+            Date.setText(MyArr.get(position).get("date").toString());
 
 
             return convertView;
@@ -208,7 +198,7 @@ public class MySick extends AppCompatActivity {
             Intent intent= getIntent();
             final String MemberID = intent.getStringExtra("userID");
 
-            String url = "http://aorair.esy.es/api/get_sicklist.php";
+            String url = "http://aorair.esy.es/api/get_listDate.php";
 
             List<NameValuePair> param = new ArrayList<NameValuePair>();
             param.add(new BasicNameValuePair("MemberID", MemberID));
@@ -226,20 +216,9 @@ public class MySick extends AppCompatActivity {
                     JSONObject c = data.getJSONObject(i);
                     map = new HashMap<String, Object>();
 
-                    map.put("Name", (String)c.getString("Name"));
-                    map.put("no_id", (String)c.getString("no_id"));
-//                    map.put("result", (String)c.getString("result"));
-                    map.put("date_n", (String)c.getString("date_n"));
-                    map.put("HN", (String)c.getString("HN"));
-                    map.put("userID", (String)c.getString("userID"));
-
-
-                    // Thumbnail Get ImageBitmap To Object
-//                    map.put("img2", (String)c.getString("img"));
+                    map.put("name", (String)c.getString("name"));
+                    map.put("date", (String)c.getString("date"));
                     map.put("img", (Bitmap)ImgBitmap.loadBitmap(c.getString("img")));
-//
-//                    // Full (for View Popup)
-//                    map.put("img2", (String)c.getString("img"));
 
                     MyArrList.add(map);
                 }
@@ -258,8 +237,7 @@ public class MySick extends AppCompatActivity {
             dismissDialog(DIALOG_DOWNLOAD_JSON_PROGRESS);
             removeDialog(DIALOG_DOWNLOAD_JSON_PROGRESS);
         }
-
-
     }
+
 
 }

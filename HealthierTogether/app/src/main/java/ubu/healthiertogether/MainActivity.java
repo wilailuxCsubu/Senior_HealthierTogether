@@ -20,7 +20,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView b1,b2;
+    CardView b1,b2,b3;
+
+    Intent intent= getIntent();
+//    public String MemberID = intent.getStringExtra("MemberID");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         b1 = (CardView) findViewById(R.id.p_sick);
         b2 = (CardView) findViewById(R.id.p_reprot);
+        b3 = (CardView) findViewById(R.id.Date);
 
         final ImageView img = (ImageView)findViewById(R.id.imgUser);
         final TextView name = (TextView)findViewById(R.id.nameUser);
@@ -91,8 +97,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMain = new Intent(MainActivity.this,MakeDate.class);
+                intentMain.putExtra("userID", finalStrID);
 
+                startActivity(intentMain);
+
+            }
+        });
+
+    }
 
     public void ToMap(View v){
         Intent i = new Intent(getApplicationContext(),MenuMap.class);
@@ -100,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
 
 
 }

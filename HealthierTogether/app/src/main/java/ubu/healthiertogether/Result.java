@@ -1,12 +1,15 @@
 package ubu.healthiertogether;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,13 +21,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Result extends AppCompatActivity {
 
+    public String no_ID;
+    TextView Date;
+    Calendar calendar;
+    int day ,month ,year;
     Button btn;
     TextView show;
     ImageView image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,19 +131,95 @@ public class Result extends AppCompatActivity {
             }
         });
 
+        Date = (TextView)findViewById(R.id.Date);
+        calendar = Calendar.getInstance();
 
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        month = calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
+
+        Date.setText(year+"-"+(month+1)+"-"+day);
+        Date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Result.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        Date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
+                    }
+                },year ,month,day);
+                datePickerDialog.show();
+            }
+        });
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == android.R.id.home){
+            this.finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public String set_noID(){
+
+        Intent intent= getIntent();
+        final String HN = intent.getStringExtra("HN");
+
+        //Search no_id of HN by date present
+        String url = "http://aorair.esy.es/api/get_noID.php";
+
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("sHN", HN));
+        String resultServer  = NetConnect.getHttpPost(url,params);
+
+        String strNo_id = "";
+
+        JSONObject c;
+        try {
+            c = new JSONObject(resultServer);
+            strNo_id = c.getString("no_id");
+
+            if(!strNo_id.equals(""))
+            {
+                int aInt = Integer.parseInt(strNo_id);
+                aInt+=1;
+                return no_ID = Integer.toString(aInt);
+            }
+            else
+            {
+                Toast toast = Toast.makeText ( Result.this, " ผิดพลาด !! " , Toast.LENGTH_LONG );
+                toast.show ( );
+            }
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
+        return no_ID;
     }
 
 
     public boolean SaveData() {
         Bundle bundle = getIntent().getExtras();
         final int result9 = bundle.getInt("Value9");
+        final String answer =  Integer.toString(result9);
 
         Intent intent= getIntent();
         final String HN = intent.getStringExtra("HN");
         final String userID = intent.getStringExtra("userID");
 
         final EditText comment = (EditText)findViewById(R.id.comment);
+        Date = (TextView)findViewById(R.id.Date);
 
 
         final String get ;
@@ -150,6 +235,7 @@ public class Result extends AppCompatActivity {
         }else{
             get = "ไม่เป็นภาระพึ่งพา";
         }
+
         // Dialog
         final AlertDialog.Builder ad = new AlertDialog.Builder(this);
 
@@ -164,6 +250,9 @@ public class Result extends AppCompatActivity {
         params.add(new BasicNameValuePair("sUserID", userID));
         params.add(new BasicNameValuePair("sResult", get));
         params.add(new BasicNameValuePair("sComment", comment.getText().toString()));
+        params.add(new BasicNameValuePair("sDate", Date.getText().toString()));
+        params.add(new BasicNameValuePair("sCore", answer));
+        params.add(new BasicNameValuePair("sNo_id",set_noID()));
 
 
         String resultServer  = NetConnect.getHttpPost(url,params);

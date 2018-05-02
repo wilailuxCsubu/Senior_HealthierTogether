@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,10 +32,8 @@ public class Personal_user extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_user);
 
-//        showInfo();
-
-//        image_user = (ImageView) findViewById(R.id.image_user);
-//        text_user = (TextView) findViewById(R.id.text_user);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         final TextView tName = (TextView)findViewById(R.id.text_user);
         final ImageView img1 = (ImageView) findViewById(R.id.image_user);
@@ -45,6 +44,7 @@ public class Personal_user extends AppCompatActivity {
 
         Intent intent= getIntent();
         final String HN = intent.getStringExtra("HN");
+        final String userID = intent.getStringExtra("userID");
 
 
 
@@ -97,6 +97,7 @@ public class Personal_user extends AppCompatActivity {
             public void onClick(View v) {
         Intent intentMain = new Intent(Personal_user.this,Home_assessment.class);
         intentMain.putExtra("HN",HN);
+        intentMain.putExtra("userID",userID);
         startActivity(intentMain);
 
             }
@@ -107,11 +108,16 @@ public class Personal_user extends AppCompatActivity {
 
     }
 
-//    public void showInfo()
-//    {
-//
-//
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == android.R.id.home){
+            this.finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     public Drawable getResource(String url) throws MalformedURLException, IOException
     {

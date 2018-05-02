@@ -4,12 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="ubu.healthiertogether.Chart">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/chart"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@color/green"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="ไม่เป็นภาระพึ่งพา"
+                    android:layout_marginLeft="15dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@color/yellow"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="ภาระพึ่งพาปานกลาง"
+                    android:layout_marginLeft="15dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@color/orange"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="ภาระพึ่งพารุนแรง"
+                    android:layout_marginLeft="15dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@color/red"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="ภาระพึ่งพาโดยสมบูรณ์"
+                    android:layout_marginLeft="15dp"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--<chart:ColumnSeries -->
+            <!--Interior="#7F7F7F" -->
+            <!--ItemsSource="{Binding SneakersDetail}"-->
+            <!--XBindingPath="Brand" -->
+            <!--YBindingPath="ItemsCount1"   />-->
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

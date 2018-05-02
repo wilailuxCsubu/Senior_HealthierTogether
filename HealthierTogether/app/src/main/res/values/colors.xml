@@ -6,5 +6,12 @@
     <color name="textBasic">#000</color>
     <color name="white">#fff</color>
 
+    <color name="red">#ff2723</color>
+    <color name="orange">#fc9c1f</color>
+    <color name="yellow">#fbff1f</color>
+    <color name="green">#1bff32</color>
+
+
+
     <color name="btn">#ffff</color>
 </resources>
