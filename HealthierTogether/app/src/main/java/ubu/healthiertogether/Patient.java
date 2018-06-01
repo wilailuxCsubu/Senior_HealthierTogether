@@ -32,7 +32,7 @@ public class Patient extends AppCompatActivity {
 
 
         CardView b1 = (CardView) findViewById(R.id.chart);
-//        b2 = (CardView) findViewById(R.id.p_reprot);
+        CardView b2 = (CardView) findViewById(R.id.date_patient);
 
         final ImageView img = (ImageView)findViewById(R.id.imgUser);
         final TextView name = (TextView)findViewById(R.id.nameUser);
@@ -48,6 +48,7 @@ public class Patient extends AppCompatActivity {
         String strID = "";
         Bitmap strImg ;
         String strName = "";
+        String userID = "";
 
 
         JSONObject c;
@@ -56,6 +57,7 @@ public class Patient extends AppCompatActivity {
             strID = c.getString("HN");
             strName = c.getString("name_p");
             strImg = (Bitmap)ImgBitmap.loadBitmap(c.getString("Img"));
+            userID = c.getString("userID");
 
 
             if(!strID.equals(""))
@@ -75,16 +77,32 @@ public class Patient extends AppCompatActivity {
 
 
         final String finalStrID = strID;
+        final String finalUserID = userID;
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentMain = new Intent(Patient.this,Chart.class);
                 intentMain.putExtra("HN", finalStrID);
+                intentMain.putExtra("userID", finalUserID);
 
                 startActivity(intentMain);
 
 //                Toast toast = Toast.makeText ( MainActivity.this, "userID :  =  " + finalStrID , Toast.LENGTH_LONG );
 //                 toast.show ( );
+
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMain = new Intent(Patient.this,DatePatient.class);
+                intentMain.putExtra("HN", finalStrID);
+                intentMain.putExtra("userID", finalUserID);
+                Toast toast = Toast.makeText ( Patient.this, "HN :  =  " + finalStrID , Toast.LENGTH_LONG );
+                 toast.show ( );
+
+                startActivity(intentMain);
 
             }
         });

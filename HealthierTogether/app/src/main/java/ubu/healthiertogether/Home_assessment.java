@@ -2,6 +2,7 @@ package ubu.healthiertogether;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,16 @@ public class Home_assessment extends AppCompatActivity {
         ch1 = (RadioButton)findViewById(R.id.ch1);
         ch2 = (RadioButton)findViewById(R.id.ch2);
         ch3 = (RadioButton)findViewById(R.id.ch3);
+
+        final AlertDialog.Builder ad = new AlertDialog.Builder(this);
+
+        // Dialog
+        ad.setTitle("ผิดพลาด! ");
+        ad.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+        ad.setPositiveButton("Close", null);
+//        ad.setMessage(strError);
+        ad.show();
+
 
         final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.gch);
 //        int selectedId = radioGroup.getCheckedRadioButtonId();

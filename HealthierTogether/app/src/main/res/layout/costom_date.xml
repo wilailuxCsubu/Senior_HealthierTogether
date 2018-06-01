@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:text="วันที่นัด : "
-                    android:textColor="#000"
+                    android:textColor="#e70b0b"
                     android:textSize="20dp" />
 
                     <TextView
@@ -62,7 +62,7 @@
                         android:text="วันที่ล่าสุด :"
                         android:layout_marginRight="5dp"
                         android:textColor="#454444"
-                        android:textSize="18dp"/>
+                        android:textSize="16dp"/>
 
             </LinearLayout>
 

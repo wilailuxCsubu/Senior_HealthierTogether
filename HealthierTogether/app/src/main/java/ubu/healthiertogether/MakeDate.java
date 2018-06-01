@@ -95,31 +95,11 @@ public class MakeDate extends AppCompatActivity {
         final ListView lstView1 = (ListView)findViewById(R.id.listDate);
         lstView1.setAdapter(new ImageAdapter(MakeDate.this,MyArrList));
 
-//        // OnClick
-//        lstView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> parent, View v,
-//                                    int position, long id) {
-////                String strName = MyArrList.get(position).get("Name").toString();
-////                String strImage = MyArrList.get(position).get("img2").toString();
-////                String strAge = MyArrList.get(position).get("age").toString();
-////                String strResult = MyArrList.get(position).get("result").toString();
-//                String strHN = MyArrList.get(position).get("HN").toString();
-////                String struserID = MyArrList.get(position).get("userID").toString();
-//
-//                Intent newActivity = new Intent(MakeDate.this,Personal_user.class);
-////                newActivity.putExtra("Name", strName);
-////                newActivity.putExtra("img", strImage);
-////                newActivity.putExtra("age", strAge);
-////                newActivity.putExtra("result", strResult);
-//                newActivity.putExtra("HN", strHN);
-////                newActivity.putExtra("userID", struserID);
-//                startActivity(newActivity);
-//            }
-//        });
+
 
     }
 
-    public class ImageAdapter extends BaseAdapter
+    public static class ImageAdapter extends BaseAdapter
     {
         private Context context;
         private ArrayList<HashMap<String, Object>> MyArr = new ArrayList<HashMap<String, Object>>();

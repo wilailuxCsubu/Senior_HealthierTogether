@@ -28,11 +28,10 @@
             android:label="@string/Home_assessment" />
         <activity
             android:name=".MySick"
-            android:label ="ผู้ป่วยของฉัน"/>
-
+            android:label="ผู้ป่วยของฉัน" />
         <activity
             android:name=".Personal_user"
-            android:label=" "/>
+            android:label=" " />
         <activity android:name=".Genogram" />
         <activity
             android:name=".Patient_history1"
@@ -94,38 +93,30 @@
         <activity
             android:name=".Home_assessment1"
             android:label="@string/Home_assessment" />
-
         <activity
             android:name=".Home_assessment2"
-            android:label="@string/Home_assessment"/>
-
+            android:label="@string/Home_assessment" />
         <activity
             android:name=".Home_assessment3"
-            android:label="@string/Home_assessment"/>
-
+            android:label="@string/Home_assessment" />
         <activity
             android:name=".Home_assessment4"
-            android:label="@string/Home_assessment"/>
-
+            android:label="@string/Home_assessment" />
         <activity
             android:name=".Home_assessment5"
-            android:label="@string/Home_assessment"/>
-
+            android:label="@string/Home_assessment" />
         <activity
             android:name=".Home_assessment6"
-            android:label="@string/Home_assessment"/>
-
+            android:label="@string/Home_assessment" />
         <activity
             android:name=".Home_assessment7"
-            android:label="@string/Home_assessment"/>
-
+            android:label="@string/Home_assessment" />
         <activity
             android:name=".Home_assessment8"
-            android:label="@string/Home_assessment"/>
-
+            android:label="@string/Home_assessment" />
         <activity
             android:name=".Home_assessment9"
-            android:label="@string/Home_assessment"/>
+            android:label="@string/Home_assessment" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -159,11 +150,10 @@
             android:name=".MapList"
             android:label="@string/title_activity_map_list"
             android:parentActivityName=".MenuMap"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".Result"
-            android:label="ผลการประเมินผู้ป่วย"/>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Result"
+            android:label="ผลการประเมินผู้ป่วย" />
         <activity android:name=".Patient" />
         <activity
             android:name=".Webviwe_genogram"
@@ -175,13 +165,12 @@
         </activity>
         <activity
             android:name=".Chart"
-            android:label=" รายงานผล"/>
-
+            android:label=" รายงานผล" />
         <activity
             android:name=".MakeDate"
-            android:label=" นัดหมาย"/>
-
-        <activity android:name=".Test"
+            android:label=" นัดหมาย" />
+        <activity
+            android:name=".Test"
             android:label="Date">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -189,6 +178,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DatePatient"
+            android:label="นัดหมาย"></activity>
     </application>
 
 </manifest>
