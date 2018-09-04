@@ -46,7 +46,7 @@ public class Result extends AppCompatActivity {
         }
 
         Bundle bundle = getIntent().getExtras();
-        final int result9 = bundle.getInt("Value9");
+        final int sum = bundle.getInt("result");
 
         Intent intent= getIntent();
         final String HN = intent.getStringExtra("HN");
@@ -59,17 +59,17 @@ public class Result extends AppCompatActivity {
 
         final String sequence;
 
-        if(result9 <= 4){
+        if(sum <= 4){
             show.setText("ภาระพึ่งพาโดยสมบูรณ์");
             sequence = "4";
             image.setImageResource(R.drawable.sad);
 
-        }else if(result9 <= 8){
+        }else if(sum <= 8){
             show.setText("ภาระพึ่งพารุนแรง");
             sequence = "3";
             image.setImageResource(R.drawable.confused);
 
-        }else if(result9 <= 11){
+        }else if(sum <= 11){
             show.setText("ภาระพึ่งพาปานกลาง");
             sequence = "2";
             image.setImageResource(R.drawable.smiling);
@@ -78,7 +78,7 @@ public class Result extends AppCompatActivity {
             image.setImageResource(R.drawable.happy);
             sequence = "1";
         }
-        Toast toast = Toast.makeText ( Result.this, "result =  " + sequence +"\n" +
+        Toast toast = Toast.makeText ( Result.this, "result =  " + sum +"\n" +
                 "HN :  =  " + HN +"\n" +"userID : " + userID, Toast.LENGTH_LONG );
         toast.show ( );
 
@@ -125,6 +125,8 @@ public class Result extends AppCompatActivity {
                 if(SaveData())
                 {
                     Intent i = new Intent(getApplicationContext(),Personal_user.class);
+                    i.putExtra("HN",HN);
+                    i.putExtra("userID",userID);
                     startActivity(i);
 
                 }
@@ -155,6 +157,7 @@ public class Result extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
     }
 
     @Override
@@ -211,8 +214,8 @@ public class Result extends AppCompatActivity {
 
     public boolean SaveData() {
         Bundle bundle = getIntent().getExtras();
-        final int result9 = bundle.getInt("Value9");
-        final String answer =  Integer.toString(result9);
+        final int sum = bundle.getInt("result");
+        final String answer =  Integer.toString(sum);
 
         Intent intent= getIntent();
         final String HN = intent.getStringExtra("HN");
@@ -224,13 +227,13 @@ public class Result extends AppCompatActivity {
 
         final String get ;
 
-        if(result9 <= 4){
+        if(sum <= 4){
             get = "ภาระพึ่งพาโดยสมบูรณ์";
 
-        }else if(result9 <= 8){
+        }else if(sum <= 8){
             get = "ภาระพึ่งพารุนแรง";
 
-        }else if(result9 <= 11){
+        }else if(sum <= 11){
             get = "ภาระพึ่งพาปานกลาง";
         }else{
             get = "ไม่เป็นภาระพึ่งพา";

@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,10 +28,7 @@ public class Patient extends AppCompatActivity {
         setContentView(R.layout.activity_patient);
 
         Intent intent= getIntent();
-        final String MemberID = intent.getStringExtra("MemberID");
-
-        Toast.makeText(Patient.this, "ID : " + MemberID, Toast.LENGTH_SHORT).show();
-
+        final String MemberID = intent.getStringExtra("userName");
 
         CardView b1 = (CardView) findViewById(R.id.chart);
         CardView b2 = (CardView) findViewById(R.id.date_patient);
@@ -48,7 +47,6 @@ public class Patient extends AppCompatActivity {
         String strID = "";
         Bitmap strImg ;
         String strName = "";
-        String userID = "";
 
 
         JSONObject c;
@@ -57,7 +55,7 @@ public class Patient extends AppCompatActivity {
             strID = c.getString("HN");
             strName = c.getString("name_p");
             strImg = (Bitmap)ImgBitmap.loadBitmap(c.getString("Img"));
-            userID = c.getString("userID");
+
 
 
             if(!strID.equals(""))
@@ -77,14 +75,11 @@ public class Patient extends AppCompatActivity {
 
 
         final String finalStrID = strID;
-        final String finalUserID = userID;
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentMain = new Intent(Patient.this,Chart.class);
                 intentMain.putExtra("HN", finalStrID);
-                intentMain.putExtra("userID", finalUserID);
-
                 startActivity(intentMain);
 
 //                Toast toast = Toast.makeText ( MainActivity.this, "userID :  =  " + finalStrID , Toast.LENGTH_LONG );
@@ -98,7 +93,6 @@ public class Patient extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentMain = new Intent(Patient.this,DatePatient.class);
                 intentMain.putExtra("HN", finalStrID);
-                intentMain.putExtra("userID", finalUserID);
                 Toast toast = Toast.makeText ( Patient.this, "HN :  =  " + finalStrID , Toast.LENGTH_LONG );
                  toast.show ( );
 
@@ -106,5 +100,34 @@ public class Patient extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_p,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent= getIntent();
+        final String MemberID = intent.getStringExtra("userName");
+
+        if (item.getItemId()== R.id.user){
+            Intent intentMain = new Intent(Patient.this,Setting_p2.class);
+            intentMain.putExtra("userName", MemberID);
+            Toast toast = Toast.makeText ( Patient.this, "userName :  =  " + MemberID , Toast.LENGTH_LONG );
+            toast.show ( );
+            startActivity(intentMain);
+
+        }
+
+        if(item.getItemId() == android.R.id.home){
+            this.finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

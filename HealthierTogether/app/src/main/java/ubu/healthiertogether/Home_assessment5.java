@@ -2,7 +2,6 @@ package ubu.healthiertogether;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -10,25 +9,22 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class Home_assessment5 extends AppCompatActivity {
+public class Home_assessment5 extends Home_assessment {
 
-    int result5;
-    Button btn ;
-    RadioButton ch0,ch1,ch2,ch3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_assessment5);
 
         Bundle bundle = getIntent().getExtras();
-        final int result4 = bundle.getInt("Value4");
+        final int sum = bundle.getInt("result");
 
         Intent intent= getIntent();
         final String HN = intent.getStringExtra("HN");
         final String userID = intent.getStringExtra("userID");
 
 
-        Toast toast = Toast.makeText ( Home_assessment5.this, "result =  " + result4 +"\n" +
+        Toast toast = Toast.makeText ( Home_assessment5.this, "result =  " + sum +"\n" +
                 "HN :  =  " + HN +"\n" +"userID : " + userID, Toast.LENGTH_LONG );
         toast.show ( );
 
@@ -50,11 +46,10 @@ public class Home_assessment5 extends AppCompatActivity {
                 else {
                     Choice();
 
-                    result5 = result4 + result5 ;
-                /*Toast toast = Toast.makeText ( Home_assessment1.this, "Checked " + result1, Toast.LENGTH_LONG );
-                toast.show ( );*/
+                    result = sum + result ;
+
                     Intent intent = new Intent(Home_assessment5.this, Home_assessment6.class);
-                    intent.putExtra("Value5", result5);
+                    intent.putExtra("result", result);
                     intent.putExtra("HN",HN);
                     intent.putExtra("userID",userID);
                     startActivity(intent);
@@ -79,16 +74,5 @@ public class Home_assessment5 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void Choice(){
-        if(ch0.isChecked()){
-            result5=0;
-        }else if(ch1.isChecked()){
-            result5=1;
-        }else if(ch2.isChecked()){
-            result5=2;
-        }else if(ch3.isChecked()){
-            result5=3;
-        }
-
-    }
+//
 }

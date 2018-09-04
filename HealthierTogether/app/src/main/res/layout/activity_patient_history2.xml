@@ -7,6 +7,16 @@
     android:orientation="vertical"
     tools:context="ubu.healthiertogether.Patient_history2">
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="แบบบันทึกข้อมูลผู้ป่วยหน้าที่ 2/6"
+        android:textColor="#000"
+        android:textSize="22dp" />
+
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -35,21 +45,24 @@
                 android:layout_marginTop="5dp">
 
                 <RadioButton
+                    android:id="@+id/ch01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="โสด"
                     android:textSize="23dp"
                     android:layout_margin="5dp"/>
+                <!--android:checked="true"-->
 
                 <RadioButton
+                    android:id="@+id/ch02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="มีคู่"
+                    android:text="คู่"
                     android:layout_margin="5dp"
                     android:textSize="23dp" />
 
                 <RadioButton
+                    android:id="@+id/ch03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="หย่าร้าง"
@@ -57,18 +70,20 @@
                     android:textSize="23dp" />
 
                 <RadioButton
+                    android:id="@+id/ch04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="หม้าย"
                     android:layout_margin="5dp"
                     android:textSize="23dp" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="อื่นๆ"
-                    android:layout_margin="5dp"
-                    android:textSize="23dp" />
+                <!--<RadioButton-->
+                    <!--android:id="@+id/ch05"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="อื่นๆ"-->
+                    <!--android:layout_margin="5dp"-->
+                    <!--android:textSize="23dp" />-->
 
             </RadioGroup>
 
@@ -76,11 +91,10 @@
     </android.support.v7.widget.CardView>
 
     <Button
-        android:id="@+id/submit_record"
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:onClick="nextTo"
         android:text="บันทึก"
         android:textColor="#000"
         android:textSize="22dp" />

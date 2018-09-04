@@ -1,9 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Setting_p2">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="110"
+        android:background="#4bb6ef"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="13dp"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:background="@drawable/backicn"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="10"
+        android:layout_marginTop="10dp">
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="การตั้งค่าโปรไฟล์"
+                    android:textColor="#000"
+                    android:textSize="23dp"
+                    android:paddingBottom="20dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="ชื่อผู้ใช้งาน"
+                        android:textColor="#000"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/u_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="xxxxx" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="รหัสผ่าน"
+                        android:textColor="#000"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/u_pw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="xxxxx" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imgU"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/profile_user" />
+
+                <Button
+                    android:id="@+id/btnCh"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:text="แก้ไขรูปประจำตัว" />
+
+
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:text="บันทึก"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:background="@drawable/register_button"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>

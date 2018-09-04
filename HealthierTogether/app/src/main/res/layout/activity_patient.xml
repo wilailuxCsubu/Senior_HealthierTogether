@@ -88,7 +88,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="การแจ้งเตือน"
+                    android:text="นัดหมาย"
                     android:textSize="25dp"
                     android:textColor="#313131"
                     android:layout_gravity="center"/>

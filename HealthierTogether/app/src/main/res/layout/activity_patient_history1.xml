@@ -7,6 +7,23 @@
     android:orientation="vertical"
     tools:context="ubu.healthiertogether.Patient_history1">
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="แบบบันทึกข้อมูลผู้ป่วยหน้าที่ 1/6"
+        android:textColor="#000"
+        android:textSize="22dp" />
+
+
+    <EditText
+        android:visibility="invisible"
+        android:id="@+id/genoID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="วัน / เดือน / ปี" />
 
 
     <android.support.v7.widget.CardView
@@ -19,15 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/date"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:ems="10"
-                android:inputType="datetime"
-                android:text="วัน / เดือน / ปี" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,7 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="ชื่อ - สกุล"
+                    android:text="ชื่อ"
                     android:textColor="#000"
                     android:textSize="18dp" />
 
@@ -84,16 +92,42 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:text="สกุล"
+                    android:textColor="#000"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="xxxxx" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:text="อายุ"
                     android:textColor="#000"
                     android:textSize="18dp" />
 
-                <Spinner
-                    android:layout_width="100dp"
+                <EditText
+                    android:id="@+id/age"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:ems="5"
+                    android:inputType="textMultiLine"
+                    android:text="xxxxx" />
 
-                </Spinner>
 
             </LinearLayout>
 
@@ -115,7 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:ems="10"
+                    android:ems="13"
                     android:inputType="textMultiLine"
                     android:text="xxxxx" />
             </LinearLayout>
@@ -124,11 +158,10 @@
     </android.support.v7.widget.CardView>
 
     <Button
-        android:id="@+id/submit_record"
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:onClick="nextTo"
         android:text="บันทึก"
         android:textColor="#000"
         android:textSize="18dp" />

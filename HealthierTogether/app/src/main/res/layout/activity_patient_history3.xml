@@ -7,7 +7,15 @@
     android:orientation="vertical"
     tools:context="ubu.healthiertogether.Patient_history3">
 
-
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="แบบบันทึกข้อมูลผู้ป่วยหน้าที่ 3/6"
+        android:textColor="#000"
+        android:textSize="22dp" />
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -35,14 +43,15 @@
                 android:layout_marginLeft="20dp">
 
                 <RadioButton
+                    android:id="@+id/ch01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="ทำนา"
                     android:layout_margin="5dp"
                     android:textSize="23dp" />
 
                 <RadioButton
+                    android:id="@+id/ch02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ค้าขาย"
@@ -50,6 +59,7 @@
                     android:textSize="23dp" />
 
                 <RadioButton
+                    android:id="@+id/ch03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="รับจ้าง"
@@ -57,18 +67,19 @@
                     android:textSize="23dp"/>
 
                 <RadioButton
+                    android:id="@+id/ch04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="รับราชการ"
                     android:layout_margin="5dp"
                     android:textSize="23dp" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="อื่นๆ"
-                    android:layout_margin="5dp"
-                    android:textSize="23dp" />
+                <!--<RadioButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="อื่นๆ"-->
+                    <!--android:layout_margin="5dp"-->
+                    <!--android:textSize="23dp" />-->
 
             </RadioGroup>
 
@@ -76,11 +87,10 @@
     </android.support.v7.widget.CardView>
 
     <Button
-        android:id="@+id/submit_record"
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:onClick="nextTo"
         android:text="บันทึก"
         android:textColor="#000"
         android:textSize="22dp" />

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class Login extends AppCompatActivity {
 
-    EditText userID,Pw;
+    EditText userName,Pw;
     Button btn;
 
     @Override
@@ -35,7 +36,7 @@ public class Login extends AppCompatActivity {
 
         final AlertDialog.Builder ad = new AlertDialog.Builder(this);
 
-        userID = (EditText)findViewById(R.id.userID);
+        userName = (EditText)findViewById(R.id.userName);
         Pw = (EditText)findViewById(R.id.userPw);
         btn = (Button)findViewById(R.id.submit);
 
@@ -45,7 +46,7 @@ public class Login extends AppCompatActivity {
 
                 String url = "http://aorair.esy.es/api/checkLogin_n.php";
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("strUser", userID.getText().toString()));
+                params.add(new BasicNameValuePair("strUser", userName.getText().toString()));
                 params.add(new BasicNameValuePair("strPass", Pw.getText().toString()));
 
                 String resultServer  = NetConnect.getHttpPost(url,params);
@@ -55,6 +56,7 @@ public class Login extends AppCompatActivity {
                 String strMemberID = "0";
                 String strType = "";
                 String strError = "ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถูกต้อง!";
+                String strUserID = "";
 
                 JSONObject c;
                 try {
@@ -63,6 +65,7 @@ public class Login extends AppCompatActivity {
                     strMemberID = c.getString("MemberID");
                     strError = c.getString("Error");
                     strType = c.getString("type");
+                    strUserID = c.getString("userID");
 
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
@@ -78,31 +81,31 @@ public class Login extends AppCompatActivity {
                     ad.setPositiveButton("Close", null);
                     ad.setMessage(strError);
                     ad.show();
-                    userID.setText("");
+                    userName.setText("");
                     Pw.setText("");
                 }
                 if(strType.equals("authorities"))
                 {
-//                    Toast.makeText(Login.this, "Login OK " + strMemberID, Toast.LENGTH_SHORT).show();
                     Intent intentMain = new Intent(Login.this,MainActivity.class);
-                    intentMain.putExtra("MemberID", strMemberID);
+                    intentMain.putExtra("userID", strUserID);
                     startActivity(intentMain);
+//                    // Dialog
+//                    ad.setTitle("ผิดพลาด! ");
+//                    ad.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+//                    ad.setPositiveButton("Close", null);
+//                    ad.setMessage(strError+ ":" + strUserID);
+//                    ad.show();
 
-//                    Intent intent_homeass = new Intent(Login.this,MainActivity.class);
-//                    intent_homeass.putExtra("MemberID", strMemberID);
-//                    startActivity(intent_homeass);
 
                 }
                 if(strType.equals("patient"))
                 {
-//                    Toast.makeText(Login.this, "Login OK " + strMemberID, Toast.LENGTH_SHORT).show();
                     Intent intentMain = new Intent(Login.this,Patient.class);
-                    intentMain.putExtra("MemberID", strMemberID);
+                    intentMain.putExtra("userName", strMemberID);
+                    Toast toast = Toast.makeText ( Login.this, "userName :  =  " + strMemberID , Toast.LENGTH_LONG );
+                    toast.show ( );
                     startActivity(intentMain);
 
-//                    Intent intent_homeass = new Intent(Login.this,MainActivity.class);
-//                    intent_homeass.putExtra("MemberID", strMemberID);
-//                    startActivity(intent_homeass);
 
                 }
 

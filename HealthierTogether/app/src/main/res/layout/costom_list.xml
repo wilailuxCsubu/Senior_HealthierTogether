@@ -78,8 +78,6 @@
                             android:textSize="15dp"/>
 
                     </LinearLayout>
-
-
                 </LinearLayout>
 
                 <ImageView
@@ -90,14 +88,8 @@
                     android:layout_marginBottom="7dp"
                     android:layout_height="40dp" />
 
-
-
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
-
-
-
-
 
 </LinearLayout>

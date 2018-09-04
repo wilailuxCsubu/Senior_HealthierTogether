@@ -8,7 +8,6 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -25,18 +24,16 @@ public class MainActivity extends AppCompatActivity {
     Intent intent= getIntent();
 //    public String MemberID = intent.getStringExtra("MemberID");
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Intent intent= getIntent();
-        final String MemberID = intent.getStringExtra("MemberID");
+        final String userID = intent.getStringExtra("userID");
 
-        Toast.makeText(MainActivity.this, "ID : " + MemberID, Toast.LENGTH_SHORT).show();
 
+//        Toast.makeText(MainActivity.this, "userID : " + userID, Toast.LENGTH_SHORT).show();
 
         b1 = (CardView) findViewById(R.id.p_sick);
         b2 = (CardView) findViewById(R.id.p_reprot);
@@ -48,10 +45,9 @@ public class MainActivity extends AppCompatActivity {
         String url = "http://aorair.esy.es/api/get_ByMemberID.php";
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("MemberID", MemberID));
+        params.add(new BasicNameValuePair("MemberID", userID));
 
         String resultServer  = NetConnect.getHttpPost(url,params);
-
 
         String strID = "";
         Bitmap strImg ;
@@ -64,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             strID = c.getString("userID");
             strName = c.getString("name_a");
             strImg = (Bitmap)ImgBitmap.loadBitmap(c.getString("Img"));
-
 
             if(!strID.equals(""))
             {
@@ -111,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ToMap(View v){
-        Intent i = new Intent(getApplicationContext(),MenuMap.class);
+        Intent i = new Intent(getApplicationContext(),MapsActivity.class);
         startActivity(i);
 
 

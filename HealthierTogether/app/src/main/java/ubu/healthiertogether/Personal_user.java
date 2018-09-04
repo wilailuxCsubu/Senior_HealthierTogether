@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Personal_user extends AppCompatActivity {
-    private ImageView image_user;
+    private ImageView image_user ,imgBack;
     private TextView text_user ;
 
     @Override
@@ -32,14 +31,13 @@ public class Personal_user extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_user);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         final TextView tName = (TextView)findViewById(R.id.text_user);
         final ImageView img1 = (ImageView) findViewById(R.id.image_user);
         final TextView tAge = (TextView)findViewById(R.id.age);
         final TextView tResult = (TextView)findViewById(R.id.result);
         final TextView homeAss = (TextView)findViewById(R.id.homeAss);
+        imgBack = (ImageView) findViewById(R.id.imgBack);
 
 
         Intent intent= getIntent();
@@ -103,21 +101,20 @@ public class Personal_user extends AppCompatActivity {
             }
         });
 
-
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMain = new Intent(Personal_user.this,MySick.class);
+//                intentMain.putExtra("MemberID",HN);
+                intentMain.putExtra("userID",userID);
+                startActivity(intentMain);
+            }
+        });
 
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
-        if(id == android.R.id.home){
-            this.finish();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public Drawable getResource(String url) throws MalformedURLException, IOException
     {
@@ -126,29 +123,46 @@ public class Personal_user extends AppCompatActivity {
 
 
 
-
-
     public void nextHis(View v){
-        Intent i = new Intent(getApplicationContext(),Patient_history1.class);
-        startActivity(i);
+        Intent intent= getIntent();
+        final String HN = intent.getStringExtra("HN");
+        final String userID = intent.getStringExtra("userID");
 
-
+        Intent intentMain = new Intent(Personal_user.this,Patient_history1.class);
+        intentMain.putExtra("HN",HN);
+        startActivity(intentMain);
+        
     }
     public void BarChart(View v){
         Intent intent= getIntent();
         final String HN = intent.getStringExtra("HN");
 
-        Intent i = new Intent(getApplicationContext(),Chart.class);
-        i.putExtra("HN",HN);
-        startActivity(i);
-        startActivity(i);
+//        Intent i = new Intent(getApplicationContext(),Menu_chart.class);
+//        i.putExtra("HN",HN);
+//        startActivity(i);
+
+        Intent intentMain = new Intent(Personal_user.this,Menu_chart.class);
+        intentMain.putExtra("HN",HN);
+        startActivity(intentMain);
 
 
     }
 
     public void toUrl (View v){
-        Intent intent = new Intent(this, Webviwe_genogram.class);
-        startActivity(intent);
+        Intent intent= getIntent();
+        String HN = intent.getStringExtra("HN");
+//
+        Intent i = new Intent(this, Webviwe_genogram.class);
+        i.putExtra("HN",HN);
+        startActivity(i);
+
+//        Intent i = new Intent();
+//        i.setData(Uri.parse("http://aorair.esy.es/Webservice_nn/genogram.php"));
+
+//        String url = "http://aorair.esy.es/Webservice_nn/genogram.php?HN="+HN;
+//        Intent i = new Intent(Intent.ACTION_VIEW);
+//        i.setData(Uri.parse(url));
+//        startActivity(i);
 
 
     }

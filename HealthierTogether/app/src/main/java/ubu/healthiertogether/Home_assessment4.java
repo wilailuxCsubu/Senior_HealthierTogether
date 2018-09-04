@@ -2,7 +2,6 @@ package ubu.healthiertogether;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -10,11 +9,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class Home_assessment4 extends AppCompatActivity {
+public class Home_assessment4 extends Home_assessment {
 
-    int result4;
-    Button btn ;
-    RadioButton ch0,ch1,ch2,ch3;
+//    int result4;
+//    Button btn ;
+//    RadioButton ch0,ch1,ch2,ch3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +21,13 @@ public class Home_assessment4 extends AppCompatActivity {
         setContentView(R.layout.activity_home_assessment4);
 
         Bundle bundle = getIntent().getExtras();
-        final int result3 = bundle.getInt("Value3");
+        final int sum = bundle.getInt("result");
         Intent intent= getIntent();
         final String HN = intent.getStringExtra("HN");
         final String userID = intent.getStringExtra("userID");
 
 
-        Toast toast = Toast.makeText ( Home_assessment4.this, "result =  " + result3 +"\n" +
+        Toast toast = Toast.makeText ( Home_assessment4.this, "result =  " + sum +"\n" +
                 "HN :  =  " + HN +"\n" +"userID : " + userID, Toast.LENGTH_LONG );
         toast.show ( );
 
@@ -40,7 +39,7 @@ public class Home_assessment4 extends AppCompatActivity {
         ch3 = (RadioButton)findViewById(R.id.ch3);
 
         btn = ( Button ) this.findViewById ( R.id.submit );
-        final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.gch);
+        radioGroup = (RadioGroup) findViewById(R.id.gch);
 
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -52,11 +51,11 @@ public class Home_assessment4 extends AppCompatActivity {
                 else {
                     Choice();
 
-                    result4 = result3 + result4 ;
+                    result = sum + result ;
                 /*Toast toast = Toast.makeText ( Home_assessment1.this, "Checked " + result1, Toast.LENGTH_LONG );
                 toast.show ( );*/
                     Intent intent = new Intent(Home_assessment4.this, Home_assessment5.class);
-                    intent.putExtra("Value4", result4);
+                    intent.putExtra("result", result);
                     intent.putExtra("HN",HN);
                     intent.putExtra("userID",userID);
                     startActivity(intent);
@@ -81,18 +80,18 @@ public class Home_assessment4 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void Choice(){
-        if(ch0.isChecked()){
-            result4=0;
-        }else if(ch1.isChecked()){
-            result4=1;
-        }else if(ch2.isChecked()){
-            result4=2;
-        }else if(ch3.isChecked()){
-            result4=3;
-        }
-
-    }
+//    public void Choice(){
+//        if(ch0.isChecked()){
+//            result4=0;
+//        }else if(ch1.isChecked()){
+//            result4=1;
+//        }else if(ch2.isChecked()){
+//            result4=2;
+//        }else if(ch3.isChecked()){
+//            result4=3;
+//        }
+//
+//    }
 
 
 

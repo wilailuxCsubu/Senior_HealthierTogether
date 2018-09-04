@@ -5,13 +5,14 @@
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -28,58 +29,40 @@
             android:label="@string/Home_assessment" />
         <activity
             android:name=".MySick"
-            android:label="ผู้ป่วยของฉัน" />
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".Personal_user"
-            android:label=" " />
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Genogram" />
         <activity
             android:name=".Patient_history1"
-            android:label="@string/History"
-            android:parentActivityName=".MySick">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MySick" />
-        </activity>
+            android:label="@string/History" />
         <activity
             android:name=".Patient_history2"
-            android:label="@string/History"
-            android:parentActivityName=".Patient_history1">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MySick" />
-        </activity>
+            android:label="@string/History" />
         <activity
             android:name=".Patient_history3"
-            android:label="@string/History"
-            android:parentActivityName=".Patient_history2">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MySick" />
-        </activity>
+            android:label="@string/History" />
         <activity
             android:name=".Patient_history4"
-            android:label="@string/History"
-            android:parentActivityName=".Patient_history3">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MySick" />
-        </activity>
+            android:label="@string/History" />
         <activity
             android:name=".Patient_history5"
-            android:label="@string/History"
-            android:parentActivityName=".Patient_history4">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MySick" />
-        </activity>
+            android:label="@string/History" />
         <activity
             android:name=".Patient_history6"
-            android:label="@string/History"
-            android:parentActivityName=".Patient_history5">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MySick" />
+            android:label="@string/History">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+
         </activity>
         <activity
             android:name=".Login"
@@ -124,7 +107,7 @@
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -150,36 +133,39 @@
             android:name=".MapList"
             android:label="@string/title_activity_map_list"
             android:parentActivityName=".MenuMap"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Result"
             android:label="ผลการประเมินผู้ป่วย" />
         <activity android:name=".Patient" />
         <activity
             android:name=".Webviwe_genogram"
-            android:label=" ผังครอบครัว"
-            android:parentActivityName=".Personal_user">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MySick" />
-        </activity>
+            android:label=" ผังครอบครัว" />
         <activity
             android:name=".Chart"
             android:label=" รายงานผล" />
         <activity
             android:name=".MakeDate"
             android:label=" นัดหมาย" />
-        <activity
-            android:name=".Test"
-            android:label="Date">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name=".DatePatient"
+            android:label="นัดหมาย" />
+        <activity
+            android:name=".Chart_list"
+            android:label="รายการสถิติสุขภาพ" />
+        <activity
+            android:name=".Menu_chart"
+            android:label="รายงานผล" />
+        <activity
+            android:name=".Setting_p"
+            android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
-        <activity android:name=".DatePatient"
-            android:label="นัดหมาย"></activity>
+        <activity android:name=".Setting_p2"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".Menu_chart">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/trans_white_rectangle"
+        android:layout_weight="50"
+        android:gravity="center">
+
+
+        <Button
+            android:onClick="barChart"
+            android:layout_width="270dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_white_m"
+            android:drawableLeft="@mipmap/ic_chart"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="40dp"
+            android:text="สถิติแบบกราฟ"
+            android:textColor="#000"
+            android:textSize="22dp" />
+
+        <Button
+            android:onClick="listChart"
+            android:layout_width="270dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/rounded_white_m"
+            android:drawableLeft="@mipmap/ic_list"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="40dp"
+            android:text="สถิติแบบรายการ"
+            android:textColor="#000"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/banner1"
+        android:layout_weight="80">
+
+    </LinearLayout>
+
+</LinearLayout>

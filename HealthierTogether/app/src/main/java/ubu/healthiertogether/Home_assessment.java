@@ -2,7 +2,6 @@ package ubu.healthiertogether;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,8 +12,11 @@ import android.widget.Toast;
 
 public class Home_assessment extends AppCompatActivity {
     Button btn ;
-    RadioButton ch0,ch1,ch2,ch3,selectedRadioButton;
-    int result=0;
+    RadioGroup radioGroup;
+    RadioButton ch0,ch1,ch2,ch3;
+    int result;
+
+    public String HN,userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,28 +28,17 @@ public class Home_assessment extends AppCompatActivity {
         ch2 = (RadioButton)findViewById(R.id.ch2);
         ch3 = (RadioButton)findViewById(R.id.ch3);
 
-        final AlertDialog.Builder ad = new AlertDialog.Builder(this);
 
-        // Dialog
-        ad.setTitle("ผิดพลาด! ");
-        ad.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-        ad.setPositiveButton("Close", null);
-//        ad.setMessage(strError);
-        ad.show();
-
-
-        final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.gch);
-//        int selectedId = radioGroup.getCheckedRadioButtonId();
-//        selectedRadioButton = (RadioButton)findViewById(selectedId);
-
+        radioGroup = (RadioGroup) findViewById(R.id.gch);
+//
         Intent intent= getIntent();
-        final String HN = intent.getStringExtra("HN");
-        final String userID = intent.getStringExtra("userID");
+         HN = intent.getStringExtra("HN");
+         userID = intent.getStringExtra("userID");
 
-
-        Toast toast = Toast.makeText ( Home_assessment.this, "HN :  =  " + HN +"\n"+
-                "userID :  =  " + userID, Toast.LENGTH_LONG );
-        toast.show ( );
+//
+//        Toast toast = Toast.makeText ( Home_assessment.this, "HN :  =  " + HN +"\n"+
+//                "userID :  =  " + userID, Toast.LENGTH_LONG );
+//        toast.show ( );
 
         btn = (Button) findViewById(R.id.submit);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -65,13 +56,11 @@ public class Home_assessment extends AppCompatActivity {
                 Toast toast = Toast.makeText ( Home_assessment.this, "Checked " + sum, Toast.LENGTH_LONG );
                 toast.show ( );*/
                     Intent intent = new Intent(Home_assessment.this, Home_assessment1.class);
-                    intent.putExtra("Value", result);
+                    intent.putExtra("result", result);
                     intent.putExtra("HN",HN);
                     intent.putExtra("userID",userID);
                     startActivity(intent);
                 }
-
-
 
             }
         });
@@ -105,8 +94,5 @@ public class Home_assessment extends AppCompatActivity {
         }
 
     }
-
-
-
 
 }

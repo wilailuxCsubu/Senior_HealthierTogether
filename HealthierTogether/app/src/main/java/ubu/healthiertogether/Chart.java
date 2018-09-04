@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -37,6 +36,7 @@ public class Chart extends AppCompatActivity {
     BarChart chart;
 
     BarData data;
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,6 @@ public class Chart extends AppCompatActivity {
 
 //        Log.d("yValues01", String.valueOf(yEntity));
     }
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
